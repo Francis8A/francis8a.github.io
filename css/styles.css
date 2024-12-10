@@ -29,7 +29,7 @@ body {
 /* Header */
 .header-bar {
     /*background: linear-gradient(90deg, rgb(60, 176, 218) 0%, rgb(116, 202, 203) 100%); */
-    background: linear-gradient(15deg, #055a6d, 50%, #55ccf4), 50%; /* Degradado de azul oscuro a azul claro */
+    background: linear-gradient(15deg, #055a6d, 75%, #55ccf4), 25%; /* Degradado de azul oscuro a azul claro */
     /* background: #1e3449; */
     color: white; /* Gris oscuro para el texto */
     padding: 0.9rem 3rem;
