@@ -29,7 +29,8 @@ body {
 /* Header */
 .header-bar {
     /*background: linear-gradient(90deg, rgb(60, 176, 218) 0%, rgb(116, 202, 203) 100%); */
-    background: #1e3449;
+    background: linear-gradient(15deg, #055a6d, 50%, #55ccf4), 50%; /* Degradado de azul oscuro a azul claro */
+    /* background: #1e3449; */
     color: white; /* Gris oscuro para el texto */
     padding: 0.9rem 3rem;
     display: flex;
@@ -71,7 +72,7 @@ body {
 
 /* Efecto al pasar el mouse */
 .header-link:hover .header-title {
-    color: #f3e43d; /* Cambia el color del título */
+    color: #80f6f0; /* Cambia el color del título */
     /*text-decoration: underline; /* Agrega subrayado */
 }
 
