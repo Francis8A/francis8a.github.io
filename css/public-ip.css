@@ -1,0 +1,52 @@
+/* Estilos específicos para la página de Identificar IP Pública */
+#ip-tool {
+    text-align: center;
+    margin: 2rem auto;
+    font-size: 1.2rem;
+    padding: 1rem;
+    background-color: #ecf0f1;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+}
+
+#loading {
+    color: #3498db;
+}
+
+#ip {
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+#ip span {
+    color: #e74c3c;
+    font-size: 2rem;
+}
+
+/* Estilos boton copiar */
+#copy-btn {
+    margin-left: 10px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    vertical-align: top; /* Alinea el botón al nivel del texto */
+}
+
+
+#copy-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Estado "Copiado" (aplicado dinámicamente desde JavaScript) */
+#copy-btn.copied {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+
