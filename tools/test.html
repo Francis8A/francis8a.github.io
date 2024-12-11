@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Calculadora de Subneteo (CIDR)</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f8f8f8;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 600px;
+        margin: 40px auto;
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 20px;
+        border-radius: 4px;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin: 10px 0 5px;
+        font-weight: bold;
+    }
+    input[type="text"] {
+        width: 100%;
+        padding: 8px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        background: #0d6efd;
+        color: #fff;
+        border: none;
+        border-radius: 2px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #0b5ed7;
+    }
+    .result {
+        margin-top: 20px;
+        background: #333;
+        color: #ddd;
+        padding: 10px;
+        border-radius: 4px;
+        font-family: monospace;
+        white-space: pre-line;
+    }
+    .error {
+        color: #c00;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Calculadora de Rango a CIDR</h1>
+    <div class="error" id="errorMsg"></div>
+    <label for="startIP">IP Inicial</label>
+    <input type="text" id="startIP" placeholder="Ejemplo: 192.168.1.5"/>
+    <label for="endIP">IP Final</label>
+    <input type="text" id="endIP" placeholder="Ejemplo: 192.168.5.254"/>
+    <button id="calculateBtn">Calcular</button>
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+// Función para validar formato de IP
+function isValidIP(ip) {
+    const parts = ip.trim().split(".");
+    if (parts.length !== 4) return false;
+    return parts.every(p => {
+        const num = parseInt(p, 10);
+        return num >= 0 && num <= 255 && p === num.toString();
+    });
+}
+
+// Convertir IP en string a número (32 bits)
+function ipToLong(ip) {
+    const parts = ip.split('.').map(Number);
+    return ((parts[0] << 24) >>> 0) + (parts[1] << 16) + (parts[2] << 8) + parts[3];
+}
+
+// Convertir número (32 bits) a IP (string)
+function longToIp(l) {
+    return [
+        (l >>> 24) & 0xFF,
+        (l >>> 16) & 0xFF,
+        (l >>> 8) & 0xFF,
+        l & 0xFF
+    ].join('.');
+}
+
+// Encuentra el bloque CIDR más grande que encaja en startIP sin superar endIP
+function largestCidrBlock(startIP, endIP) {
+    let maxSize = 32;
+    while (maxSize > 0) {
+        const mask = ~((1 << (32 - maxSize)) - 1) >>> 0;
+        if ((startIP & mask) === startIP) {
+            const blockEnd = (startIP | ~mask) >>> 0;
+            if (blockEnd <= endIP) {
+                return maxSize; // Aquí se devuelve en cuanto se encuentra un bloque válido.
+            }
+        }
+        maxSize--;
+    }
+    return maxSize; // En teoría, siempre debería haber encontrado algo antes de llegar aquí.
+}
+
+
+console.log("Probandobloque con maxSize=", maxSize);
+console.log("startIP:", startIP, "endIP:", endIP, "mask:", mask);
+
+let startTest = ipToLong("192.168.1.5");
+let maxSize = 32;
+let mask = ~((1 << (32 - maxSize)) - 1) >>> 0;
+console.log((startTest & mask) === startTest); // Debería ser true para /32
+
+const prefix = largestCidrBlock(start, end);
+result.push(longToIp(start) + "/" + prefix);
+start += Math.pow(2, (32 - prefix));
+
+
+function ipRangeToCidr(startStr, endStr) {
+    let start = ipToLong(startStr);
+    let end = ipToLong(endStr);
+    const result = [];
+    while (start <= end) {
+        const prefix = largestCidrBlock(start, end);
+        result.push(longToIp(start) + "/" + prefix);
+        start += Math.pow(2, (32 - prefix));
+    }
+    return result;
+}
+
+document.getElementById('calculateBtn').addEventListener('click', function() {
+    const startIP = document.getElementById('startIP').value.trim();
+    const endIP = document.getElementById('endIP').value.trim();
+    const errorMsg = document.getElementById('errorMsg');
+    const resultDiv = document.getElementById('result');
+
+    errorMsg.textContent = "";
+    resultDiv.textContent = "";
+
+    if (!isValidIP(startIP) || !isValidIP(endIP)) {
+        errorMsg.textContent = "Por favor, ingresa direcciones IP válidas.";
+        return;
+    }
+
+    const start = ipToLong(startIP);
+    const end = ipToLong(endIP);
+
+    if (start > end) {
+        errorMsg.textContent = "La IP inicial debe ser menor o igual a la IP final.";
+        return;
+    }
+
+    const cidrList = ipRangeToCidr(startIP, endIP);
+    resultDiv.textContent = cidrList.join("\n");
+});
+</script>
+</body>
+</html>
