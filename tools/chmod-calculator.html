@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHMOD Permissions Calculator</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/chmod-calculator.css">
+</head>
+<body>
+    <header class="tool-page-header">
+        <div class="tool-page-title">
+            <img src="../images/chmod-assistant.png" class="tool-page-icon" alt="CHMOD Permissions Calculator">
+            <h1>CHMOD Permissions Calculator</h1>
+        </div><p class="tool-page-description"> Define permisos Linux de forma visual y genera comandos
+            <strong>chmod</strong> más seguros. </p>
+    </header>
+    <main class="container">
+        <section class="card">
+            <h2>1. ¿Qué estás configurando?</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="resourceType">Tipo de recurso</label>
+                    <select id="resourceType">
+                        <option value="file">Archivo normal</option>
+                        <option value="script">Script ejecutable</option>
+                        <option value="directory">Directorio</option>
+                        <option value="config">Archivo de configuración</option>
+                        <option value="private-file">Archivo privado</option>
+                        <option value="private-directory">Directorio privado</option>
+                        <option value="shared-directory">Directorio compartido por un grupo</option>
+                        <option value="custom">Personalizado</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="resourceName">Archivo / directorio</label>
+                    <input type="text" id="resourceName" value="archivo" placeholder="Ejemplo: script.sh">
+                </div>
+            </div>
+            <div id="recommendation" class="recommendation"></div>
+        </section>
+
+        <section class="card">
+            <h2>2. Selecciona los permisos</h2>
+            <div class="permissions-table">
+                <div class="permission-header">
+                    <div>Usuario</div>
+                    <div>Read<br><span>r = 4</span></div>
+                    <div>Write<br><span>w = 2</span></div>
+                    <div>Execute<br><span>x = 1</span></div>
+                    <div>Valor</div>
+                </div>
+
+                <div class="permission-row">
+                    <div class="user-label">Owner <span>u</span></div>
+                    <div><input type="checkbox" class="permission" data-group="owner" data-permission="r" value="4"></div>
+                    <div><input type="checkbox" class="permission" data-group="owner" data-permission="w" value="2"></div>
+                    <div><input type="checkbox" class="permission" data-group="owner" data-permission="x" value="1"></div>
+                    <div class="permission-value" id="ownerValue">0</div>
+                </div>
+
+                <div class="permission-row">
+                    <div class="user-label">Group <span>g</span></div>
+                    <div><input type="checkbox" class="permission" data-group="group" data-permission="r" value="4"></div>
+                    <div><input type="checkbox" class="permission" data-group="group" data-permission="w" value="2"></div>
+                    <div><input type="checkbox" class="permission" data-group="group" data-permission="x" value="1"></div>
+                    <div class="permission-value" id="groupValue">0</div>
+                </div>
+
+                <div class="permission-row">
+                    <div class="user-label">Others <span>o</span></div>
+                    <div><input type="checkbox" class="permission" data-group="others" data-permission="r" value="4"></div>
+                    <div><input type="checkbox" class="permission" data-group="others" data-permission="w" value="2"></div>
+                    <div><input type="checkbox" class="permission" data-group="others" data-permission="x" value="1"></div>
+                    <div class="permission-value" id="othersValue">0</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>3. Resultado</h2>
+            <div class="results-grid">
+                <div class="result-box">
+                    <span class="result-title">Octal</span>
+                    <strong id="octalResult">000</strong>
+                </div>
+                <div class="result-box">
+                    <span class="result-title">Permisos</span>
+                    <strong id="symbolicResult">---------</strong>
+                </div>
+            </div>
+
+            <div class="command-section">
+                <label>Comando recomendado</label>
+                <div class="command-box">
+                    <code id="commandResult">chmod 000 archivo</code>
+                    <button class="copy-btn" id="copyButton" type="button">Copiar</button>
+                </div>
+            </div>
+
+            <div class="symbolic-command">
+                <label>Equivalente simbólico (asignación exacta)</label>
+                <code id="symbolicCommand">chmod u=,g=,o= archivo</code>
+            </div>
+
+            <div id="riskMessage" class="risk-message"></div>
+        </section>
+
+        <section class="card">
+            <h2>4. Modificación simbólica: +, - y =</h2>
+            <p class="section-help">
+                Úsalo cuando quieras <strong>agregar</strong> o <strong>quitar</strong> permisos sin reemplazar toda la configuración actual.
+            </p>
+
+            <div class="symbolic-builder">
+                <div class="builder-block">
+                    <span class="builder-title">¿A quién?</span>
+                    <label><input type="checkbox" class="symbolic-target" value="u" checked> Owner (u)</label>
+                    <label><input type="checkbox" class="symbolic-target" value="g"> Group (g)</label>
+                    <label><input type="checkbox" class="symbolic-target" value="o"> Others (o)</label>
+                    <label><input type="checkbox" id="targetAll" value="a"> Todos (a)</label>
+                </div>
+
+                <div class="builder-block">
+                    <span class="builder-title">Operación</span>
+                    <label><input type="radio" name="symbolicOperator" value="+" checked> + Agregar</label>
+                    <label><input type="radio" name="symbolicOperator" value="-"> - Quitar</label>
+                    <label><input type="radio" name="symbolicOperator" value="="> = Establecer exactamente</label>
+                </div>
+
+                <div class="builder-block">
+                    <span class="builder-title">¿Qué permisos?</span>
+                    <label><input type="checkbox" class="symbolic-permission" value="r"> Read (r)</label>
+                    <label><input type="checkbox" class="symbolic-permission" value="w"> Write (w)</label>
+                    <label><input type="checkbox" class="symbolic-permission" value="x" checked> Execute (x)</label>
+                </div>
+            </div>
+
+            <div id="symbolicBuilderHint" class="builder-hint"></div>
+
+            <div class="command-section compact-command">
+                <label>Comando generado</label>
+                <div class="command-box">
+                    <code id="symbolicBuilderCommand">chmod u+x archivo</code>
+                    <button class="copy-btn" id="copySymbolicButton" type="button">Copiar</button>
+                </div>
+            </div>
+
+            <div class="examples-row">
+                <span><code>u+x</code> agrega ejecución al propietario</span>
+                <span><code>g-w</code> quita escritura al grupo</span>
+                <span><code>o-rwx</code> quita todo a otros</span>
+                <span><code>u=rw</code> deja exactamente lectura/escritura al propietario</span>
+            </div>
+        </section>
+
+        <section class="card">
+            <h2>¿Qué significan estos permisos?</h2>
+            <div class="help-grid">
+                <div>
+                    <h3>Archivo</h3>
+                    <p><strong>r</strong> = leer contenido</p>
+                    <p><strong>w</strong> = modificar contenido</p>
+                    <p><strong>x</strong> = ejecutar</p>
+                </div>
+                <div>
+                    <h3>Directorio</h3>
+                    <p><strong>r</strong> = listar nombres del contenido</p>
+                    <p><strong>w</strong> = crear/eliminar/renombrar entradas (normalmente requiere x)</p>
+                    <p><strong>x</strong> = entrar y acceder a elementos conocidos</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="card">
+            <details id="advancedDetails">
+                <summary>Opciones avanzadas</summary>
+                <div class="advanced-content">
+                    <h3>Permisos especiales</h3>
+                    <p class="section-help">Estos bits agregan un cuarto dígito al modo octal. Úsalos solo cuando el caso lo requiera.</p>
+
+                    <div class="special-permissions">
+                        <label class="special-option">
+                            <input type="checkbox" id="suid" value="4">
+                            <span><strong>SUID (4)</strong><small>En un ejecutable, puede ejecutar con el UID efectivo del propietario.</small></span>
+                        </label>
+                        <label class="special-option">
+                            <input type="checkbox" id="sgid" value="2">
+                            <span><strong>SGID (2)</strong><small>En directorios, los nuevos elementos heredan el grupo del directorio.</small></span>
+                        </label>
+                        <label class="special-option">
+                            <input type="checkbox" id="sticky" value="1">
+                            <span><strong>Sticky Bit (1)</strong><small>En directorios compartidos, restringe quién puede borrar/renombrar entradas ajenas.</small></span>
+                        </label>
+                    </div>
+
+                    <div id="specialPermissionInfo" class="advanced-info"></div>
+
+                    <h3 class="advanced-subtitle">Ejemplos típicos</h3>
+                    <div class="advanced-example">
+                        <code>chmod 4755 programa</code><span>SUID + 755</span>
+                        <code>chmod 2775 directorio</code><span>SGID + directorio compartido por grupo</span>
+                        <code>chmod 1777 /tmp</code><span>Sticky Bit + escritura global</span>
+                    </div>
+                </div>
+            </details>
+        </section>
+    </main>
+
+    <script src="../js/chmod-calculator.js"></script>
+</body>
+</html>

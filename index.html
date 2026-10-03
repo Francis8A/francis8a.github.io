@@ -1,98 +1,314 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Tools</title>
+
+    <title>Francis8A IT Tools | Professional IT Toolkit</title>
+
+    <meta name="description"
+        content="Herramientas prácticas para Linux, Kubernetes, Cloud, Networking y automatización.">
+
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" type="image/x-icon" href="images/favicon.ico">
 </head>
-<body>
-    <header class="header-bar">
-        <div class="header-content">
-            <a href="index.html" class="header-link">
-                <img src="images/avatar.png" alt="Icono de Inicio" class="header-icon">
-            </a>
-            <a href="index.html" class="header-link">
-                <h1 class="header-title">Francis8A Tools Site </h1>
-            </a>
-        </div>
-    </header>
-    <main>
-        <section class="tool-grid">
-            <!-- Primera tarjeta -->
-            <div class="tool-card white" onclick="loadTool('tools/subnet-calculator.html')">
-                <div class="tool-icon">
-                    <img src="images/subnet-caculator.png" alt="Icono de Calculadora de Subneteo">
-                </div>
-                <div class="tool-content">
-                    <h2>Subnet Calculator</h2>
-                    <p>Calcula subredes fácilmente para tu red.</p>
-                </div>
-            </div>
-            <!-- Segunda tarjeta -->
-            <div class="tool-card white" onclick="loadTool('tools/public-ip.html')">
-                <div class="tool-icon">
-                    <img src="images/public-ip.png" alt="Icono de IP Pública">
-                </div>
-                <div class="tool-content">
-                    <h2>Public IP</h2>
-                    <p>Obtén tu dirección IP pública en un clic.</p>
-                </div>
-            </div>
-            <!-- Tercera tarjeta -->
-            <div class="tool-card pastel-purple" onclick="loadTool('tools/comming-soon.html')">
-                <div class="tool-icon">
-                    <img src="images/pronto1.png" alt="Icono">
-                </div>
-                <div class="tool-content">
-                    <h2>Tool 3</h2>
-                    <p>Descripción.</p>
-                </div>
-            </div>
-            <!-- Cuarta tarjeta -->
-            <div class="tool-card pastel-mint-green" onclick="loadTool('tools/comming-soon.html')">
-                <div class="tool-icon">
-                    <img src="images/pronto2.png" alt="Icono">
-                </div>
-                <div class="tool-content">
-                    <h2>Tool 4</h2>
-                    <p>Descripción.</p>
-                </div>
-            </div>
-            <!-- Quinta tarjeta -->
-            <div class="tool-card pastel-light-lilac" onclick="loadTool('tools/comming-soon.html')">
-                <div class="tool-icon">
-                    <img src="images/pronto3.png" alt="Icono">
-                </div>
-                <div class="tool-content">
-                    <h2>Tool 5</h2>
-                    <p>Descripción.</p>
-                </div>
-            </div>
-            <!-- Sexta tarjeta -->
-            <div class="tool-card pastel-pink" onclick="loadTool('tools/comming-soon.html')">
-                <div class="tool-icon">
-                    <img src="images/coming-soon.png" alt="Icono">
-                </div>
-                <div class="tool-content">
-                    <h2>Tool 6</h2>
-                    <p>Descripción.</p>
-                </div>
-            </div>
-        </section>        
-    </main>
-    <footer class="footer">
-        <p>© 2024 IT Tools Generated with AI </p>
-    </footer>
 
-    <div id="tool-modal" class="modal">
-        <div class="modal-content">
-            <img src="images/cerrar-cuadrado.png" alt="Cerrar" class="close-btn" onclick="closeModal()">
-            <iframe id="tool-frame" src="" frameborder="0"></iframe>
+<body class="home-page">
+
+    <!-- =====================================================
+         HERO PRINCIPAL
+         ===================================================== -->
+    <header class="site-hero">
+
+        <div class="hero-tech-pattern" aria-hidden="true">
+            <span class="tech-node node-1"></span>
+            <span class="tech-node node-2"></span>
+            <span class="tech-node node-3"></span>
+            <span class="tech-node node-4"></span>
+            <span class="tech-line line-1"></span>
+            <span class="tech-line line-2"></span>
+            <span class="tech-line line-3"></span>
         </div>
-    </div> 
+
+        <div class="hero-code" aria-hidden="true">
+            <span><b>$</b> kubectl get pods</span>
+            <span><b>$</b> chmod 640 config</span>
+            <span><b>$</b> ip addr show</span>
+        </div>
+
+        <div class="site-hero-inner">
+
+            <!-- PERFIL -->
+            <aside class="hero-profile-card">
+
+                <a href="https://github.com/Francis8A" target="_blank" rel="noopener noreferrer" class="hero-photo-link"
+                    aria-label="Abrir perfil de Francis8A en GitHub">
+                    <div class="hero-photo-frame">
+                        <img src="images/avatar.png" alt="Francis8A" class="hero-photo">
+                    </div>
+                </a>
+
+                <div class="hero-profile-info">
+                    <strong>Francis8A</strong>
+
+                    <a href="https://github.com/Francis8A" target="_blank" rel="noopener noreferrer"
+                        class="hero-handle">
+                        @Francis8A ↗
+                    </a>
+
+                    <span class="hero-profile-role">
+                        Software · AI · Digital Design
+                    </span>
+                </div>
+
+            </aside>
+
+
+            <!-- IDENTIDAD DEL SITIO -->
+            <div class="hero-content">
+
+                <div class="hero-eyebrow">
+                    <span class="hero-status-dot"></span>
+                    PROFESSIONAL IT TOOLKIT
+                </div>
+
+                <h1 class="hero-title">
+                    Francis8A <span>IT TOOLS</span>
+                </h1>
+
+                <p class="hero-subtitle">
+                    Cloud · Linux · Containers · Networking · Automation
+                </p>
+
+                <p class="hero-description">
+                    Un espacio de herramientas prácticas para resolver tareas
+                    reales de infraestructura y operación. Creado con una visión
+                    que combina desarrollo de software, inteligencia artificial
+                    y diseño digital.
+                </p>
+
+                <div class="hero-chips" aria-label="Áreas principales">
+                    <span>Linux</span>
+                    <span>Kubernetes</span>
+                    <span>Cloud</span>
+                    <span>Networking</span>
+                    <span>Automation</span>
+                </div>
+
+                <div class="hero-actions">
+
+                    <a href="#tools" class="hero-button hero-button-primary">
+                        Explorar herramientas
+                        <span aria-hidden="true">↓</span>
+                    </a>
+
+                    <a href="https://github.com/Francis8A" target="_blank" rel="noopener noreferrer"
+                        class="hero-button hero-button-secondary">
+                        Ver perfil en GitHub
+                        <span aria-hidden="true">↗</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="hero-bottom-line" aria-hidden="true"></div>
+
+    </header>
+
+
+    <!-- =====================================================
+         TOOLS
+         ===================================================== -->
+    <main class="home-main">
+
+        <section class="tools-section" id="tools">
+
+            <div class="tools-intro">
+
+                <div>
+                    <span class="section-kicker">TOOLBOX</span>
+
+                    <h2>
+                        Herramientas disponibles
+                    </h2>
+                </div>
+
+                <p>
+                    Utilidades diseñadas para ahorrar tiempo en tareas
+                    técnicas frecuentes. Selecciona una para abrirla.
+                </p>
+
+            </div>
+
+
+            <div class="tool-grid">
+
+                <!-- Subnet Calculator -->
+                <div class="tool-card white" onclick="loadTool('tools/subnet-calculator.html')">
+                    <span class="tool-category">NETWORK</span>
+
+                    <div class="tool-icon">
+                        <img src="images/subnet-calculator.png" alt="Icono de Calculadora de Subneteo">
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>Subnet Calculator</h2>
+                        <p>Calcula subredes fácilmente para tu red.</p>
+                    </div>
+
+                    <span class="tool-open-hint">Abrir herramienta ↗</span>
+                </div>
+
+
+                <!-- Public IP -->
+                <div class="tool-card white" onclick="loadTool('tools/public-ip.html')">
+                    <span class="tool-category">NETWORK</span>
+
+                    <div class="tool-icon">
+                        <img src="images/public-ip.png" alt="Icono de IP Pública">
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>Public IP</h2>
+                        <p>Obtén tu dirección IP pública en un clic.</p>
+                    </div>
+
+                    <span class="tool-open-hint">Abrir herramienta ↗</span>
+                </div>
+
+
+                <!-- CHMOD -->
+                <div class="tool-card white" onclick="loadTool('tools/chmod-calculator.html')">
+                    <span class="tool-category">LINUX</span>
+
+                    <div class="tool-icon">
+                        <img src="images/chmod-assistant.png" alt="CHMOD Permissions Calculator">
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>CHMOD Calculator</h2>
+                        <p>Define permisos Linux de forma segura.</p>
+                    </div>
+
+                    <span class="tool-open-hint">Abrir herramienta ↗</span>
+                </div>
+
+
+                <!-- CHOWN -->
+                <div class="tool-card white" onclick="loadTool('tools/chown-calculator.html')">
+                    <span class="tool-category">LINUX</span>
+
+                    <div class="tool-icon">
+                        <img src="images/chown_assistant.png" alt="CHOWN Ownership Assistant">
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>CHOWN Assistant</h2>
+                        <p>
+                            Define propietario y grupo de archivos y directorios.
+                        </p>
+                    </div>
+
+                    <span class="tool-open-hint">Abrir herramienta ↗</span>
+                </div>
+
+                <!-- Container & Kubernetes Assistant -->
+                <div class="tool-card tool-card-featured white"
+                    onclick="loadTool('tools/container-k8s-assistant-v2.html')">
+                    <span class="tool-category">CONTAINERS</span>
+
+                    <span class="tool-new-badge">V2</span>
+
+                    <div class="tool-icon">
+                        <img src="images/container-k8s-assistant.png" alt="Container & Kubernetes Assistant">
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>Container & Kubernetes Assistant</h2>
+                        <p>
+                            Inventario, troubleshooting, networking y operación
+                            de Kubernetes/OpenShift.
+                        </p>
+                    </div>
+
+                    <span class="tool-open-hint">Abrir herramienta ↗</span>
+                </div>
+                <!-- Image Compressor -->
+                <div
+                    class="tool-card white"
+                    onclick="loadTool('tools/image-compressor.html')">
+                    <span class="tool-category">MEDIA</span>
+                    <div class="tool-icon">
+                        <img src="images/compressor-image.png" alt="Image Compressor">
+                    </div>
+                    <div class="tool-content">
+                        <h2>Image Compressor</h2>
+                        <p>Reduce el tamaño de tus fotos manteniendo una alta calidad visual.</p>
+                    </div>
+                    <span class="tool-open-hint">
+                        Abrir herramienta ↗
+                    </span>
+                </div>
+
+                <!-- Próximamente -->
+                <div class="tool-card tool-card-coming white" onclick="loadTool('tools/comming-soon.html')">
+                    <span class="tool-category">COMING SOON</span>
+
+                    <div class="tool-icon">
+                        <img src="images/coming-soon.png" alt="Próximamente">
+                    </div>
+
+                    <div class="tool-content">
+                        <h2>Next Tool</h2>
+                        <p>Nuevas herramientas IT en preparación.</p>
+                    </div>
+
+                    <span class="tool-open-hint">Ver estado ↗</span>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+    <footer class="footer home-footer">
+        <div class="home-footer-content">
+            <div>
+                <strong>Francis8A IT TOOLS</strong>
+                <span>Practical tools for real IT work.</span>
+            </div>
+            <a href="https://github.com/Francis8A" target="_blank" rel="noopener noreferrer">
+                GitHub @Francis8A ↗
+            </a>
+        </div>
+        <p class="home-footer-copy">
+            © 2026 Francis8A IT Tools · Built with HTML, CSS & JavaScript.
+        </p>
+    </footer>
+    <!-- =====================================================
+         MODAL DE HERRAMIENTAS
+         ===================================================== -->
+    <div id="tool-modal" class="modal">
+
+        <div class="modal-content">
+
+            <img src="images/cerrar-cuadrado.png" alt="Cerrar" class="close-btn" onclick="closeModal()">
+
+            <iframe id="tool-frame" src="" frameborder="0" title="Herramienta IT"></iframe>
+
+        </div>
+
+    </div>
+
 
     <script src="js/main.js"></script>
+
 </body>
+
 </html>

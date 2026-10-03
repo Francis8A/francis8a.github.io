@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOWN Ownership Assistant</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/chown-calculator.css">
+</head>
+<body>
+<header class="tool-page-header">
+    <div class="tool-page-title">
+        <img src="../images/chown_assistant.png"
+            class="tool-page-icon"
+            alt="CHOWN Ownership Assistant">
+        <h1>CHOWN Ownership Assistant</h1>
+    </div>
+    <p class="tool-page-description"> Define propietarios y grupos de archivos y directorios
+        de forma visual y segura. </p>
+</header>
+<main class="container">
+    <!-- 1. RECURSO -->
+    <section class="card">
+        <h2>1. Recurso</h2>
+
+        <div class="form-grid">
+            <div class="form-group form-group-wide">
+                <label for="resourcePath">Ruta</label>
+                <input
+                    type="text"
+                    id="resourcePath"
+                    value="/opt/app"
+                    placeholder="/opt/app/config.yaml"
+                    autocomplete="off"
+                >
+                <small class="field-help">
+                    Puedes usar rutas absolutas o relativas. Si contienen espacios, la herramienta las protegerá automáticamente.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="resourceType">Tipo de recurso</label>
+                <select id="resourceType">
+                    <option value="file">Archivo</option>
+                    <option value="directory" selected>Directorio</option>
+                    <option value="symlink">Enlace simbólico</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="useCase">Caso común</label>
+                <select id="useCase">
+                    <option value="both">Cambiar owner y group</option>
+                    <option value="owner">Cambiar solo owner</option>
+                    <option value="group">Cambiar solo group</option>
+                    <option value="application">Corregir propiedad de una aplicación</option>
+                    <option value="recursive">Corregir un directorio completo</option>
+                    <option value="shared">Preparar carpeta compartida</option>
+                    <option value="custom">Personalizado</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="resourceHint" class="info-box"></div>
+    </section>
+
+    <!-- 2. OWNERSHIP -->
+    <section class="card">
+        <h2>2. Propietario y grupo</h2>
+
+        <div class="ownership-grid">
+            <div class="ownership-panel">
+                <label class="toggle-label">
+                    <input type="checkbox" id="changeOwner" checked>
+                    <span>Cambiar owner</span>
+                </label>
+
+                <div class="form-group">
+                    <label for="ownerName">Nuevo owner</label>
+                    <input
+                        type="text"
+                        id="ownerName"
+                        value="appuser"
+                        placeholder="appuser"
+                        autocomplete="off"
+                    >
+                </div>
+            </div>
+
+            <div class="ownership-panel">
+                <label class="toggle-label">
+                    <input type="checkbox" id="changeGroup" checked>
+                    <span>Cambiar group</span>
+                </label>
+
+                <div class="form-group">
+                    <label for="groupName">Nuevo group</label>
+                    <input
+                        type="text"
+                        id="groupName"
+                        value="appgroup"
+                        placeholder="appgroup"
+                        autocomplete="off"
+                    >
+                </div>
+            </div>
+        </div>
+
+        <div class="syntax-examples">
+            <div><code>chown usuario archivo</code><span>Solo owner</span></div>
+            <div><code>chown :grupo archivo</code><span>Solo group</span></div>
+            <div><code>chown usuario:grupo archivo</code><span>Owner + group</span></div>
+        </div>
+    </section>
+
+    <!-- 3. OPCIONES -->
+    <section class="card">
+        <h2>3. Opciones</h2>
+
+        <div class="options-grid">
+            <label class="option-card">
+                <input type="checkbox" id="recursive">
+                <span>
+                    <strong>Recursivo</strong>
+                    <small><code>-R</code> — aplica el cambio a todo el contenido.</small>
+                </span>
+            </label>
+
+            <label class="option-card">
+                <input type="checkbox" id="oneFileSystem">
+                <span>
+                    <strong>No cruzar otros filesystems</strong>
+                    <small><code>-x</code> / <code>--one-file-system</code></small>
+                </span>
+            </label>
+
+            <label class="option-card">
+                <input type="checkbox" id="noDereference">
+                <span>
+                    <strong>Actuar sobre el symlink</strong>
+                    <small><code>-h</code> — cambia el enlace y no su destino.</small>
+                </span>
+            </label>
+        </div>
+
+        <div id="optionHint" class="info-box"></div>
+    </section>
+
+    <!-- 4. RESULTADO -->
+    <section class="card">
+        <h2>4. Resultado</h2>
+
+        <div class="summary-grid">
+            <div class="summary-item">
+                <span>Owner</span>
+                <strong id="ownerSummary">appuser</strong>
+            </div>
+            <div class="summary-item">
+                <span>Group</span>
+                <strong id="groupSummary">appgroup</strong>
+            </div>
+            <div class="summary-item">
+                <span>Recursivo</span>
+                <strong id="recursiveSummary">No</strong>
+            </div>
+            <div class="summary-item">
+                <span>Tipo</span>
+                <strong id="typeSummary">Directorio</strong>
+            </div>
+        </div>
+
+        <div class="command-section">
+            <label>Comando generado</label>
+
+            <div class="command-box">
+                <code id="commandResult">chown appuser:appgroup /opt/app</code>
+                <button type="button" id="copyButton">Copiar</button>
+            </div>
+        </div>
+
+        <div id="explanationBox" class="explanation-box"></div>
+        <div id="riskMessage" class="risk-message"></div>
+    </section>
+
+    <!-- AVANZADO -->
+    <section class="card">
+        <details>
+            <summary>Opciones avanzadas</summary>
+
+            <div class="advanced-content">
+
+                <h3>Copiar propietario y grupo desde otro recurso</h3>
+
+                <label class="toggle-label">
+                    <input type="checkbox" id="useReference">
+                    <span>Usar <code>--reference</code></span>
+                </label>
+
+                <div class="form-group" id="referenceGroup">
+                    <label for="referencePath">Archivo o directorio de referencia</label>
+                    <input
+                        type="text"
+                        id="referencePath"
+                        value="/etc/ssh/sshd_config"
+                        placeholder="/ruta/referencia"
+                        autocomplete="off"
+                    >
+                    <small class="field-help">
+                        Al activarlo, owner y group se copiarán desde este recurso y se ignorarán los campos manuales.
+                    </small>
+                </div>
+
+                <hr>
+
+                <h3>Salida y comportamiento</h3>
+
+                <div class="options-grid">
+                    <label class="option-card">
+                        <input type="checkbox" id="changesOnly">
+                        <span>
+                            <strong>Mostrar solo cambios</strong>
+                            <small><code>-c</code> / <code>--changes</code></small>
+                        </span>
+                    </label>
+
+                    <label class="option-card">
+                        <input type="checkbox" id="verbose">
+                        <span>
+                            <strong>Mostrar detalle</strong>
+                            <small><code>-v</code> / <code>--verbose</code></small>
+                        </span>
+                    </label>
+
+                    <label class="option-card">
+                        <input type="checkbox" id="silent">
+                        <span>
+                            <strong>Silenciar mensajes de error</strong>
+                            <small><code>-f</code> / <code>--silent</code></small>
+                        </span>
+                    </label>
+                </div>
+
+                <div class="advanced-note">
+                    <strong>Nota:</strong>
+                    <code>-c</code> y <code>-v</code> son útiles para revisar cambios.
+                    <code>-f</code> puede ocultar información importante durante una ejecución.
+                </div>
+
+            </div>
+        </details>
+    </section>
+
+    <!-- AYUDA -->
+    <section class="card">
+        <h2>¿Qué hace CHOWN?</h2>
+
+        <div class="help-grid">
+            <div>
+                <h3>Owner</h3>
+                <p>Usuario propietario del archivo o directorio.</p>
+                <code>chown appuser archivo</code>
+            </div>
+
+            <div>
+                <h3>Group</h3>
+                <p>Grupo asociado al archivo o directorio.</p>
+                <code>chown :appgroup archivo</code>
+            </div>
+
+            <div>
+                <h3>Owner + Group</h3>
+                <p>Cambia ambos valores en una sola operación.</p>
+                <code>chown appuser:appgroup archivo</code>
+            </div>
+
+            <div>
+                <h3>Recursivo</h3>
+                <p>Aplica la propiedad a todo un árbol de directorios.</p>
+                <code>chown -R appuser:appgroup /opt/app</code>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="../js/chown-calculator.js"></script>
+</body>
+</html>
