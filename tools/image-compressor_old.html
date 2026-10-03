@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Compressor</title>
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/image-compressor.css">
+</head>
+<body>
+
+<header class="tool-page-header">
+    <div class="tool-page-title">
+        <div class="tool-page-icon">🖼️</div>
+
+        <div>
+            <h1>Image Compressor</h1>
+            <p>
+                Reduce el tamaño de tus fotos directamente en el navegador
+                manteniendo una alta calidad visual.
+            </p>
+        </div>
+    </div>
+
+    <div class="header-badges">
+        <span>100% navegador</span>
+        <span>Sin subir imágenes</span>
+    </div>
+</header>
+
+<main class="container">
+
+    <section class="card">
+        <h2>1. Selecciona las imágenes</h2>
+
+        <label class="drop-zone" id="dropZone">
+            <input
+                type="file"
+                id="fileInput"
+                accept="image/jpeg,image/png,image/webp"
+                multiple
+            >
+
+            <span class="drop-icon">📷</span>
+            <strong>Arrastra imágenes aquí</strong>
+            <span>o haz clic para seleccionarlas</span>
+            <small>JPG, PNG y WebP</small>
+        </label>
+    </section>
+
+    <section class="card">
+        <h2>2. Configuración</h2>
+
+        <div class="config-grid">
+
+            <div class="form-group">
+                <label for="outputFormat">Formato de salida</label>
+
+                <select id="outputFormat">
+                    <option value="image/webp" selected>WebP</option>
+                    <option value="image/jpeg">JPEG</option>
+                    <option value="image/png">PNG</option>
+                </select>
+
+                <small>
+                    WebP suele ofrecer la mejor relación entre calidad y tamaño.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="qualityRange">
+                    Calidad:
+                    <strong id="qualityValue">85%</strong>
+                </label>
+
+                <input
+                    type="range"
+                    id="qualityRange"
+                    min="50"
+                    max="100"
+                    value="85"
+                    step="1"
+                >
+
+                <small>
+                    Entre 80% y 90% suele verse prácticamente igual al original.
+                </small>
+            </div>
+
+            <div class="form-group">
+                <label for="resizeMode">Redimensionar</label>
+
+                <select id="resizeMode">
+                    <option value="none" selected>Mantener tamaño original</option>
+                    <option value="max-width">Limitar ancho máximo</option>
+                    <option value="max-dimension">Limitar lado mayor</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="sizeLimit">Límite en píxeles</label>
+
+                <input
+                    type="number"
+                    id="sizeLimit"
+                    value="1920"
+                    min="320"
+                    max="10000"
+                    step="10"
+                    disabled
+                >
+
+                <small>
+                    Solo se usa cuando activas redimensionamiento.
+                </small>
+            </div>
+
+        </div>
+
+        <div class="recommendation">
+            <strong>Recomendación:</strong>
+            WebP al 85% para web y GitHub.
+            JPEG al 90% si necesitas máxima compatibilidad.
+        </div>
+    </section>
+
+    <section class="card">
+
+        <div class="section-heading">
+            <div>
+                <h2>3. Resultado</h2>
+                <p>Todo el procesamiento se realiza localmente.</p>
+            </div>
+
+            <div class="actions">
+                <button id="clearButton" class="secondary-button" type="button">
+                    Limpiar
+                </button>
+
+                <button id="compressButton" class="primary-button" type="button">
+                    Comprimir imágenes
+                </button>
+            </div>
+        </div>
+
+        <div id="summary" class="summary hidden"></div>
+
+        <div id="imageList" class="image-list">
+            <div class="empty-state">
+                Todavía no seleccionaste imágenes.
+            </div>
+        </div>
+
+    </section>
+
+</main>
+
+<script src="../js/image-compressor.js"></script>
+</body>
+</html>

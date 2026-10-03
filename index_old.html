@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT Tools</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+</head>
+<body>
+    <header class="header-bar">
+        <div class="header-content">
+            <a href="index.html" class="header-link">
+                <img src="images/avatar.png" alt="Icono de Inicio" class="header-icon">
+            </a>
+            <a href="index.html" class="header-link">
+                <h1 class="header-title">Francis8A Tools Site </h1>
+            </a>
+        </div>
+    </header>
+    <main>
+        <section class="tool-grid">
+            <!-- Primera tarjeta -->
+            <div class="tool-card white" onclick="loadTool('tools/subnet-calculator.html')">
+                <div class="tool-icon">
+                    <img src="images/subnet-caculator.png" alt="Icono de Calculadora de Subneteo">
+                </div>
+                <div class="tool-content">
+                    <h2>Subnet Calculator</h2>
+                    <p>Calcula subredes fácilmente para tu red.</p>
+                </div>
+            </div>
+            <!-- Segunda tarjeta -->
+            <div class="tool-card white" onclick="loadTool('tools/public-ip.html')">
+                <div class="tool-icon">
+                    <img src="images/public-ip.png" alt="Icono de IP Pública">
+                </div>
+                <div class="tool-content">
+                    <h2>Public IP</h2>
+                    <p>Obtén tu dirección IP pública en un clic.</p>
+                </div>
+            </div>
+            <!-- Tercera tarjeta -->
+            <div class="tool-card pastel-purple" onclick="loadTool('tools/comming-soon.html')">
+                <div class="tool-icon">
+                    <img src="images/pronto1.png" alt="Icono">
+                </div>
+                <div class="tool-content">
+                    <h2>Tool 3</h2>
+                    <p>Descripción.</p>
+                </div>
+            </div>
+            <!-- Cuarta tarjeta -->
+            <div class="tool-card pastel-mint-green" onclick="loadTool('tools/comming-soon.html')">
+                <div class="tool-icon">
+                    <img src="images/pronto2.png" alt="Icono">
+                </div>
+                <div class="tool-content">
+                    <h2>Tool 4</h2>
+                    <p>Descripción.</p>
+                </div>
+            </div>
+            <!-- Quinta tarjeta -->
+            <div class="tool-card pastel-light-lilac" onclick="loadTool('tools/comming-soon.html')">
+                <div class="tool-icon">
+                    <img src="images/pronto3.png" alt="Icono">
+                </div>
+                <div class="tool-content">
+                    <h2>Tool 5</h2>
+                    <p>Descripción.</p>
+                </div>
+            </div>
+            <!-- Sexta tarjeta -->
+            <div class="tool-card pastel-pink" onclick="loadTool('tools/comming-soon.html')">
+                <div class="tool-icon">
+                    <img src="images/coming-soon.png" alt="Icono">
+                </div>
+                <div class="tool-content">
+                    <h2>Tool 6</h2>
+                    <p>Descripción.</p>
+                </div>
+            </div>
+        </section>        
+    </main>
+    <footer class="footer">
+        <p>© 2024 IT Tools Generated with AI </p>
+    </footer>
+
+    <div id="tool-modal" class="modal">
+        <div class="modal-content">
+            <img src="images/cerrar-cuadrado.png" alt="Cerrar" class="close-btn" onclick="closeModal()">
+            <iframe id="tool-frame" src="" frameborder="0"></iframe>
+        </div>
+    </div> 
+
+    <script src="js/main.js"></script>
+</body>
+</html>
