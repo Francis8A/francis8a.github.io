@@ -1,0 +1,121 @@
+<!doctype html>
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta
+        content="default-src 'none'; script-src 'self' blob:; worker-src blob:; style-src 'self'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+        http-equiv="Content-Security-Policy" />
+    <title>PDF Maestro | Unir, editar y ordenar páginas</title>
+    <link href="../css/pdf-maestro.css" rel="stylesheet" />
+    <link href="../images/pdf-maestro.png" rel="icon" type="image/png" />
+</head>
+
+<body>
+    <header>
+        <div class="brand"><img alt="Ícono PDF Maestro" class="brand-icon" height="66" src="../images/pdf-maestro.png"
+                width="66" />
+            <div>
+                <h1>PDF Maestro</h1>
+                <p>Une, edita y ordena tus PDF sin subir archivos.</p>
+            </div>
+        </div><span class="badge">● 100% Navegador</span>
+    </header>
+    <main>
+        <section class="panel intro">
+            <div>
+                <h2>1. Añade tus archivos PDF</h2>
+                <p>Puedes elegir varios archivos o arrastrarlos sobre esta ventana.</p>
+                <p>Los documentos se procesan en la memoria de tu equipo.</p>
+            </div><label class="filelabel primary">+ Añadir PDF<input accept=".pdf,application/pdf" hidden="" id="files"
+                    multiple="" type="file" /></label>
+        </section>
+        <section class="panel">
+            <div class="toolbar"><strong>2. Ordena y edita las páginas</strong><span id="count">0 páginas</span><span
+                    class="spacer"></span><button id="selectAll">Seleccionar todas</button><button disabled=""
+                    id="delete">Eliminar seleccionadas</button><button disabled="" id="clear">Vaciar</button></div>
+            <p>Arrastra una tarjeta para moverla antes de otra, o usa sus flechas. Haz clic en la miniatura para
+                ampliarla y en «✎ Editar» para resaltar, escribir o dibujar sobre la página.</p>
+            <div class="toolbar"><label for="filename">Nombre del resultado:</label><input id="filename" maxlength="160"
+                    type="text" value="documento-unido.pdf" /><span class="spacer"></span><button class="primary"
+                    disabled="" id="save">3. Guardar PDF unido</button></div>
+            <div aria-live="polite" id="status" role="status">Todo listo. Añade un PDF para comenzar.</div>
+        </section>
+        <div id="grid">
+            <div class="empty"><strong>Tus páginas aparecerán aquí</strong>Añade archivos y organízalos en el orden que
+                quieras.</div>
+        </div>
+        <footer>Sin cuentas, sin subidas y sin servicios externos. Los archivos originales no se modifican. Al cerrar
+            esta ventana se descarta la sesión; guarda primero el resultado. Los formularios, marcadores, adjuntos y
+            firmas digitales no se conservan como tales al unir páginas. Los resaltados, textos y figuras que añadas se
+            integran en el contenido de la página al guardar. Para ocultar datos sensibles usa «Tachar»: tapar con un
+            rectángulo no borra lo que hay debajo.</footer>
+    </main>
+    <dialog id="preview">
+        <div class="toolbar"><strong id="previewTitle"></strong><span class="spacer"></span><button
+                id="closePreview">Cerrar</button></div><img alt="Vista ampliada de la página" id="large" />
+    </dialog>
+    <dialog aria-labelledby="editorTitle" id="editor">
+        <div class="ed-top"><strong id="editorTitle">Editar página</strong><span class="spacer"></span><button
+                id="edCancel" type="button">Cancelar</button><button class="primary" id="edApply" type="button">Aplicar
+                cambios</button></div>
+        <div aria-label="Herramientas de edición" class="ed-tools" role="toolbar">
+            <div class="ed-group"><button aria-pressed="false" data-tool="select" title="Seleccionar" type="button">➤
+                    Seleccionar</button><button aria-pressed="false" data-tool="highlight" title="Resaltar"
+                    type="button">▮ Resaltar</button><button aria-pressed="false" data-tool="redact" title="Tachar"
+                    type="button">■ Tachar</button><button aria-pressed="false" data-tool="text" title="Texto"
+                    type="button">T Texto</button><button aria-pressed="false" data-tool="rect" title="Rectángulo"
+                    type="button">▭ Rectángulo</button><button aria-pressed="false" data-tool="ellipse" title="Círculo"
+                    type="button">◯ Círculo</button><button aria-pressed="false" data-tool="arrow" title="Flecha"
+                    type="button">➝ Flecha</button></div><span class="ed-sep"></span>
+            <div class="ed-group"><label>Trazo / texto <input id="edStroke" type="color"
+                        value="#d0312d" /></label><label>Relleno <input id="edFill" type="color"
+                        value="#ffe14d" /></label><label><input id="edFilled" type="checkbox" /> Con
+                    relleno</label><label>Grosor <select id="edWidth">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option selected="" value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                        <option value="8">8</option>
+                    </select></label><label>Tamaño texto <select id="edSize">
+                        <option value="8">8</option>
+                        <option value="10">10</option>
+                        <option value="12">12</option>
+                        <option selected="" value="14">14</option>
+                        <option value="16">16</option>
+                        <option value="20">20</option>
+                        <option value="24">24</option>
+                        <option value="32">32</option>
+                        <option value="48">48</option>
+                    </select></label></div><span class="ed-sep"></span>
+            <div class="ed-group"><button aria-label="Alejar" id="edZoomOut" title="Alejar (Ctrl −)"
+                    type="button">−</button><span aria-live="polite" class="ed-zoom" id="edZoomLabel">100%</span><button
+                    aria-label="Acercar" id="edZoomIn" title="Acercar (Ctrl +)" type="button">+</button><button
+                    id="edZoomFit" title="Ajustar a la ventana (Ctrl 0)" type="button">Ajustar</button></div><span
+                class="ed-sep"></span>
+            <div class="ed-group"><button id="edUndo" title="Deshacer (Ctrl+Z)" type="button">↶ Deshacer</button><button
+                    id="edDelete" title="Eliminar selección (Supr)" type="button">Eliminar</button><button
+                    id="edClearAll" title="Quitar todo lo añadido en esta página" type="button">Quitar todo</button>
+            </div>
+        </div>
+        <div class="ed-scroll">
+            <div id="edStage"><canvas aria-hidden="true" id="edPage"></canvas><canvas
+                    aria-label="Lienzo de edición de la página" id="edOverlay"></canvas><textarea
+                    aria-label="Texto a insertar" hidden="" id="edText" maxlength="2000" rows="1"></textarea></div>
+        </div>
+        <p aria-live="polite" class="ed-hint" id="edHint"></p>
+    </dialog>
+
+
+
+    <script defer="" src="../js/vendor/pdf-lib.min.js"></script>
+    <script defer="" src="../js/vendor/pdf.worker-source.js"></script>
+    <script defer="" src="../js/vendor/pdf.min.js"></script>
+    <script defer="" src="../js/pdf-maestro.js"></script>
+</body>
+
+</html>

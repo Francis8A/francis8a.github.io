@@ -1,0 +1,495 @@
+* {
+    box-sizing: border-box
+}
+
+body {
+    margin: 0;
+    background: #eef2f5;
+    color: #182c3c;
+    font: 15px 'Segoe UI', Arial, sans-serif
+}
+
+header {
+    background: #142f40;
+    color: white;
+    padding: 28px max(24px, calc((100vw - 1180px)/2));
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+
+h1 {
+    margin: 0;
+    font-size: 27px
+}
+
+header p {
+    margin: 8px 0 0;
+    color: #c2d1da
+}
+
+.badge {
+    padding: 9px 14px;
+    background: #244b50;
+    border: 1px solid #4c8076;
+    border-radius: 30px;
+    font-size: 13px
+}
+
+main {
+    max-width: 1228px;
+    margin: auto;
+    padding: 26px 24px
+}
+
+button,
+.filelabel {
+    border: 1px solid #c7d3da;
+    background: white;
+    color: #183345;
+    padding: 10px 15px;
+    border-radius: 7px;
+    font: inherit;
+    cursor: pointer;
+    display: inline-block
+}
+
+button:hover,
+.filelabel:hover {
+    background: #e7eff3
+}
+
+button:focus-visible,
+.filelabel:focus-within {
+    outline: 3px solid #0d9e93;
+    outline-offset: 2px
+}
+
+.primary {
+    background: #087f75;
+    border-color: #087f75;
+    color: white
+}
+
+.primary:hover {
+    background: #06685f
+}
+
+button:disabled {
+    opacity: .45;
+    cursor: default
+}
+
+.toolbar {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center
+}
+
+.spacer {
+    flex: 1
+}
+
+.panel {
+    background: white;
+    border: 1px solid #d9e1e5;
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 20px
+}
+
+.intro {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between
+}
+
+.intro p {
+    margin: 6px 0;
+    color: #5b6c77
+}
+
+.intro h2 {
+    margin: 0;
+    font-size: 19px
+}
+
+#status {
+    margin: 18px 0 8px;
+    min-height: 22px;
+    color: #425766;
+    white-space: pre-line
+}
+
+#status.error {
+    color: #a12626
+}
+
+#grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px
+}
+
+.card {
+    background: white;
+    border: 2px solid transparent;
+    box-shadow: 0 2px 7px #16304015;
+    border-radius: 9px;
+    overflow: hidden;
+    cursor: grab
+}
+
+.card.selected {
+    border-color: #087f75
+}
+
+.card.dragover {
+    border-color: #dc8726
+}
+
+.thumb {
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #dfe6eb;
+    padding: 12px
+}
+
+.thumb img {
+    max-width: 100%;
+    max-height: 100%;
+    box-shadow: 0 2px 6px #0003
+}
+
+.details {
+    padding: 12px
+}
+
+.name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 7px 0;
+    color: #596976;
+    font-size: 12px
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 7px
+}
+
+.row label {
+    flex: 1
+}
+
+.row button {
+    padding: 5px 8px;
+    font-size: 14px
+}
+
+.empty {
+    text-align: center;
+    padding: 65px 20px;
+    border: 2px dashed #b7c9d2;
+    border-radius: 12px;
+    color: #617783;
+    grid-column: 1/-1
+}
+
+.empty strong {
+    display: block;
+    font-size: 23px;
+    color: #2d4a5c;
+    margin-bottom: 10px
+}
+
+footer {
+    color: #657580;
+    font-size: 13px;
+    margin: 24px 0
+}
+
+input[type=text] {
+    font: inherit;
+    padding: 10px;
+    border: 1px solid #c7d3da;
+    border-radius: 7px;
+    width: 210px
+}
+
+input[type=checkbox] {
+    accent-color: #087f75;
+    width: 17px;
+    height: 17px
+}
+
+#count {
+    font-size: 14px;
+    color: #526672
+}
+
+dialog {
+    border: 0;
+    border-radius: 12px;
+    padding: 16px;
+    max-width: 94vw;
+    max-height: 94vh
+}
+
+dialog::backdrop {
+    background: #102a3bd9
+}
+
+#large {
+    display: block;
+    max-height: 75vh;
+    max-width: 85vw;
+    margin: 12px auto
+}
+
+#previewTitle {
+    margin-right: 20px
+}
+
+.tag {
+    font-size: 12px;
+    color: #087f75;
+    background: #e3f3f1;
+    border-radius: 20px;
+    padding: 2px 8px
+}
+
+#editor {
+    width: min(1220px, 98vw);
+    padding: 0;
+    overflow: hidden
+}
+
+#editor[open] {
+    display: flex;
+    flex-direction: column
+}
+
+.ed-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #dfe6ea
+}
+
+.ed-top strong {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+.ed-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+    align-items: center;
+    padding: 10px 16px;
+    background: #f5f8fa;
+    border-bottom: 1px solid #dfe6ea
+}
+
+.ed-group {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-wrap: wrap
+}
+
+.ed-group label {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    font-size: 13px;
+    color: #425766
+}
+
+.ed-tools button {
+    padding: 7px 10px;
+    font-size: 13px
+}
+
+.ed-tools button[aria-pressed=true] {
+    background: #087f75;
+    border-color: #087f75;
+    color: #fff
+}
+
+.ed-tools select {
+    font: inherit;
+    font-size: 13px;
+    padding: 5px;
+    border: 1px solid #c7d3da;
+    border-radius: 6px;
+    background: #fff
+}
+
+.ed-tools input[type=color] {
+    width: 34px;
+    height: 28px;
+    padding: 1px;
+    border: 1px solid #c7d3da;
+    border-radius: 6px;
+    background: #fff;
+    cursor: pointer
+}
+
+.ed-sep {
+    width: 1px;
+    align-self: stretch;
+    background: #d4dee4
+}
+
+.ed-scroll {
+    position: relative;
+    overflow: auto;
+    background: #cfd9df;
+    padding: 18px;
+    display: flex;
+    min-height: 200px;
+    max-height: calc(94vh - 190px)
+}
+
+#edStage {
+    margin: auto
+}
+
+.ed-zoom {
+    min-width: 46px;
+    text-align: center;
+    font-size: 13px
+}
+
+#edStage {
+    position: relative;
+    flex: none;
+    box-shadow: 0 3px 14px #0004;
+    background: #fff
+}
+
+#edStage canvas {
+    position: absolute;
+    left: 0;
+    top: 0
+}
+
+#edOverlay {
+    touch-action: none
+}
+
+#edText {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border: 1px dashed #0a7cff;
+    background: #ffffffcc;
+    outline: none;
+    resize: none;
+    overflow: hidden;
+    white-space: pre;
+    min-width: 40px
+}
+
+.ed-hint {
+    margin: 0;
+    padding: 9px 16px;
+    font-size: 13px;
+    color: #526672;
+    border-top: 1px solid #dfe6ea
+}
+
+@media(max-width:650px) {
+    header {
+        align-items: start;
+        gap: 15px
+    }
+
+    .badge {
+        font-size: 11px
+    }
+
+    .intro {
+        display: block
+    }
+
+    .intro .filelabel {
+        margin-top: 14px
+    }
+
+    .spacer {
+        display: none
+    }
+
+    #grid {
+        grid-template-columns: repeat(auto-fill, minmax(155px, 1fr))
+    }
+
+    .thumb {
+        height: 190px
+    }
+}
+
+/* Identidad visual PDF Maestro */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 16px
+}
+
+.brand-icon {
+    width: 66px;
+    height: 66px;
+    flex: none;
+    object-fit: contain;
+    filter: drop-shadow(0 3px 6px #0004)
+}
+
+@media(max-width:650px) {
+    .brand {
+        gap: 10px
+    }
+
+    .brand-icon {
+        width: 48px;
+        height: 48px
+    }
+
+    header h1 {
+        font-size: 22px
+    }
+}
+
+/* Ajustes para apertura de PDF Maestro dentro del modal del portal */
+header {
+    gap: 16px;
+    padding-right: 84px
+}
+
+@media(max-width:650px) {
+    header {
+        padding-right: 70px
+    }
+
+    header .badge {
+        display: none
+    }
+
+    .toolbar {
+        gap: 7px
+    }
+
+    .panel {
+        padding: 15px
+    }
+}
