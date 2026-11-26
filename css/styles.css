@@ -1511,3 +1511,19 @@ footer {
     }
 
 }
+
+/* Decision Studio: acceso independiente a la guía desde la tarjeta */
+.decision-studio-guide-link{display:inline-block;margin-top:10px;color:#087b79;font-size:12px;font-weight:750;text-decoration:underline;text-underline-offset:3px;position:relative;z-index:2}
+.decision-studio-guide-link:hover{color:#e4564b}
+
+/* Aviso legal global del portal: legible y adaptable */
+.home-page .site-legal{margin:24px auto 15px;padding:18px 20px;max-width:1020px;border:1px solid rgba(147,170,180,.28);border-radius:14px;background:rgba(255,255,255,.045);color:#d5e4e8;line-height:1.65;text-align:left}
+.home-page .site-legal h2{font-size:16px;line-height:1.4;margin:0 0 8px;color:#f5fafb}
+.home-page .site-legal p{font-size:12px;margin:0 0 10px;color:#d3e2e7}
+.home-page .site-legal-details{margin-top:10px}
+.home-page .site-legal-details summary{cursor:pointer;color:#8ad9d4;font-size:13px;font-weight:700;padding:6px 0;list-style-position:inside}
+.home-page .site-legal-details summary:hover{text-decoration:underline}
+.home-page .site-legal-body{padding:14px 2px 4px;border-top:1px solid rgba(147,170,180,.24);margin-top:8px}
+.home-page .site-legal-body h3{font-size:13px;color:#f5fafb;margin:12px 0 4px}
+.home-page .site-legal .site-legal-date{font-size:11px;color:#9db7bd;margin-top:14px}
+@media(max-width:650px){.home-page .site-legal{margin:18px 0 12px;padding:15px}}
