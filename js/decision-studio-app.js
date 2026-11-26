@@ -1,4 +1,4 @@
-/* Decision Studio v4.3 · decision-studio-app.js */
+/* Decision Studio v4.3.1 · importador compatible con respaldos antiguos */
 /* Aplicación cliente sin backend. Cuestionario editable, independiente del cliente. */
 (function(){
 'use strict';
@@ -45,23 +45,56 @@ function makeFile(format){try{const blob=Export[format](state.meta,DATA,state.an
 function backup(){const payload={schema:1,exportedAt:new Date().toISOString(),meta:state.meta,answers:state.answers,persistent:state.persistent,clock:state.clock,data:DATA};Export.download(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'}),basename()+'_respaldo.json');notify('Respaldo JSON descargado')}
 let pendingRestore=null;
 function closeRestoreMode(){pendingRestore=null;$('restoreModeModal').classList.add('hidden')}
+function prepareRestore(obj,fileName,questionnaire){
+  const data=validateData(questionnaire);
+  const allowed=new Set(data.questions.map(q=>String(q.id))),clean={};
+  let matched=0,unmatched=[];
+  Object.entries(obj.answers).forEach(([k,v])=>{
+   if(!allowed.has(k)||!v||typeof v!=='object'||Array.isArray(v))return;
+   const q=data.questions.find(q=>String(q.id)===k);
+   const selected=text(v.option);
+   if(selected&&selected!=='__other__'){
+    if(!q.options.includes(selected))unmatched.push('Pregunta '+k+': '+selected.slice(0,100));
+    else matched++;
+   }
+   clean[k]={status:['sin_revisar','confirmada','pendiente','revision','no_aplica'].includes(v.status)?v.status:'sin_revisar',option:selected.slice(0,600),customAnswer:text(v.customAnswer).slice(0,600),owner:text(v.owner).slice(0,120),customOwner:text(v.customOwner).slice(0,120),commitment:text(v.commitment).slice(0,10),notes:text(v.notes).slice(0,2000),updatedAt:text(v.updatedAt).slice(0,60)};
+  });
+  // Los respaldos anteriores a v3 no identifican las preguntas por UID.
+  // Su correspondencia se verifica usando las alternativas guardadas en cada pregunta.
+  // NO se asignan respuestas por número a un cuestionario diferente.
+  if(unmatched.length)throw Error('El cuestionario no coincide con '+unmatched.length+' respuestas del respaldo. '+unmatched[0]+'. Selecciona el cuestionario original, no el de otro proyecto.');
+  if(!obj.data&&matched===0&&Object.keys(clean).length)throw Error('No se puede verificar que el cuestionario seleccionado corresponda a esta entrevista: ninguna respuesta coincide con una alternativa.');
+  pendingRestore={data,answers:clean,meta:obj.meta,exportedAt:obj.exportedAt||''};
+  const preview=$('restorePreview');preview.textContent='';
+  const title=document.createElement('strong');title.textContent='Archivo: '+fileName;
+  const detail=document.createElement('div');detail.textContent='Cliente: '+text(obj.meta.client||'Sin especificar').slice(0,120)+' · Proyecto: '+text(obj.meta.project||'Sin especificar').slice(0,140);
+  const stats=document.createElement('div');stats.textContent=data.questions.length+' preguntas · '+Object.keys(clean).length+' registros de respuesta'+(obj.exportedAt?' · Respaldo: '+new Date(obj.exportedAt).toLocaleString('es-PE'):'');
+  preview.append(title,detail,stats);
+  if(!obj.data){const notice=document.createElement('div');notice.textContent='Formato antiguo detectado: preguntas reconstruidas mediante la plantilla seleccionada. '+matched+' alternativas verificadas. Revisa que el cuestionario corresponda a esta entrevista antes de confirmar.';notice.style.marginTop='8px';notice.style.color='#975a28';preview.append(notice)}
+  document.querySelector('input[name="restoreMode"][value="full"]').checked=true;
+  $('restoreModeConfirm').textContent='Continuar proyecto';
+  $('restoreModeModal').classList.remove('hidden');
+}
 async function restore(file){
  try{
   if(file.size>5*1024*1024)throw Error('El archivo supera el límite de 5 MB');
   const obj=JSON.parse(await file.text());
-  if(!obj||obj.schema!==1||!obj.answers||typeof obj.answers!=='object'||Array.isArray(obj.answers)||!obj.meta||typeof obj.meta!=='object'||!obj.data)throw Error('Se necesita un respaldo completo de Decision Studio');
-  const data=validateData(obj.data);
-  const allowed=new Set(data.questions.map(q=>String(q.id))),clean={};
-  Object.entries(obj.answers).forEach(([k,v])=>{if(allowed.has(k)&&v&&typeof v==='object'&&!Array.isArray(v))clean[k]={status:['sin_revisar','confirmada','pendiente','revision','no_aplica'].includes(v.status)?v.status:'sin_revisar',option:text(v.option).slice(0,600),customAnswer:text(v.customAnswer).slice(0,600),owner:text(v.owner).slice(0,120),customOwner:text(v.customOwner).slice(0,120),commitment:text(v.commitment).slice(0,10),notes:text(v.notes).slice(0,2000),updatedAt:text(v.updatedAt).slice(0,60)}});
-  pendingRestore={data,answers:clean,meta:obj.meta,exportedAt:obj.exportedAt||''};
-  const preview=$('restorePreview');preview.textContent='';
-  const title=document.createElement('strong');title.textContent='Archivo: '+file.name;
-  const detail=document.createElement('div');detail.textContent='Cliente: '+text(obj.meta.client||'Sin especificar').slice(0,120)+' · Proyecto: '+text(obj.meta.project||'Sin especificar').slice(0,140);
-  const stats=document.createElement('div');stats.textContent=data.questions.length+' preguntas · '+Object.keys(clean).length+' registros de respuesta'+(obj.exportedAt?' · Respaldo: '+new Date(obj.exportedAt).toLocaleString('es-PE'):'');
-  preview.append(title,detail,stats);
-  document.querySelector('input[name="restoreMode"][value="full"]').checked=true;
-  $('restoreModeConfirm').textContent='Continuar proyecto';
-  $('restoreModeModal').classList.remove('hidden');
+  if(!obj||obj.schema!==1||!obj.answers||typeof obj.answers!=='object'||Array.isArray(obj.answers)||!obj.meta||typeof obj.meta!=='object'||Array.isArray(obj.meta))throw Error('No es un respaldo válido de Decision Studio');
+  if(obj.data){prepareRestore(obj,file.name,obj.data);return}
+  // Versiones iniciales: JSON contiene respuestas, pero no estructura de preguntas.
+  // Se pide explícitamente la plantilla correcta para evitar desplazamientos de respuestas.
+  notify('Respaldo antiguo: selecciona el cuestionario original de esa entrevista');
+  const picker=document.createElement('input');picker.type='file';picker.accept='.json,application/json';picker.style.display='none';document.body.append(picker);
+  picker.addEventListener('change',async()=>{
+   try{
+    const templateFile=picker.files?.[0];if(!templateFile)return;
+    if(templateFile.size>5*1024*1024)throw Error('La plantilla supera el límite de 5 MB');
+    const template=JSON.parse(await templateFile.text());
+    prepareRestore(obj,file.name,template);
+   }catch(e){pendingRestore=null;notify('No se pudo reconstruir el respaldo: '+e.message);alert('No se pudo reconstruir el respaldo antiguo. '+e.message)}
+   finally{picker.remove()}
+  },{once:true});
+  picker.click();
  }catch(e){pendingRestore=null;notify('No se pudo abrir: '+e.message)}finally{$('importJsonInput').value=''}
 }
 function commitRestore(){
