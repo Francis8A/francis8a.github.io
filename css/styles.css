@@ -1513,8 +1513,6 @@ footer {
 }
 
 /* Decision Studio: acceso independiente a la guía desde la tarjeta */
-.decision-studio-guide-link{display:inline-block;margin-top:10px;color:#087b79;font-size:12px;font-weight:750;text-decoration:underline;text-underline-offset:3px;position:relative;z-index:2}
-.decision-studio-guide-link:hover{color:#e4564b}
 
 /* Aviso legal global del portal: legible y adaptable */
 .home-page .site-legal{margin:24px auto 15px;padding:18px 20px;max-width:1020px;border:1px solid rgba(147,170,180,.28);border-radius:14px;background:rgba(255,255,255,.045);color:#d5e4e8;line-height:1.65;text-align:left}
@@ -1527,3 +1525,7 @@ footer {
 .home-page .site-legal-body h3{font-size:13px;color:#f5fafb;margin:12px 0 4px}
 .home-page .site-legal .site-legal-date{font-size:11px;color:#9db7bd;margin-top:14px}
 @media(max-width:650px){.home-page .site-legal{margin:18px 0 12px;padding:15px}}
+
+/* Decision Studio: tarjeta de navegación semántica */
+.home-page a.decision-studio-card{text-decoration:none;color:inherit}
+.home-page a.decision-studio-card:focus-visible{outline:3px solid #22a6b4;outline-offset:4px}

@@ -1,63 +1,48 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="#072e31">
   <title>Decision Studio | Cuestionarios de Arquitectura</title>
-
+  
   <link rel="stylesheet" href="../css/decision-studio.css">
-
-
-
+  
+  
+  
 </head>
-
 <body>
   <div class="app-shell" id="appShell">
     <aside class="sidebar" id="sidebar">
       <div class="brand">
         <div class="brand-mark">D<span>·</span>S</div>
-        <div><strong id="appBrand">Decision Studio</strong><small id="appSubtitle">CUESTIONARIOS · ARQUITECTURA</small>
-        </div>
+        <div><strong id="appBrand">Decision Studio</strong><small id="appSubtitle">CUESTIONARIOS · ARQUITECTURA</small></div>
       </div>
-      <div class="meeting-label"><span class="tiny-pulse"></span> MESA DE VALIDACIÓN <span class="vtag">V1.0</span>
-      </div>
-      <div class="side-title">BLOQUES DE DECISIÓN</div><button id="closeSidebar" class="close-side" type="button">✕
-        Ocultar panel</button>
+      <div class="meeting-label"><span class="tiny-pulse"></span> MESA DE VALIDACIÓN <span class="vtag">V1.0</span></div>
+      <div class="side-title">BLOQUES DE DECISIÓN</div><button id="closeSidebar" class="close-side" type="button">✕ Ocultar panel</button>
       <nav id="groupNav" aria-label="Secciones de validaciones"></nav>
       <div class="side-bottom">
         <div class="clock-box">
-          <div class="clock-top"><span>SESIÓN DE TRABAJO</span><span class="clock-dot" id="clockMinutesLabel">30
-              MIN</span></div>
-          <div id="clockDisplay" class="clock-value">30:00</div><label class="clock-length-label">Duración
-            (minutos)<input id="clockDuration" type="number" min="1" max="480" step="1" value="30"
-              aria-label="Duración de la reunión en minutos"></label>
+          <div class="clock-top"><span>SESIÓN DE TRABAJO</span><span class="clock-dot" id="clockMinutesLabel">30 MIN</span></div>
+          <div id="clockDisplay" class="clock-value">30:00</div><label class="clock-length-label">Duración (minutos)<input id="clockDuration" type="number" min="1" max="480" step="1" value="30" aria-label="Duración de la reunión en minutos"></label>
           <div class="clock-controls">
             <button id="clockToggle" class="clock-btn" type="button">▶ Iniciar</button>
             <button id="clockReset" class="clock-ghost" type="button" title="Reiniciar cronómetro">↻</button>
           </div>
         </div>
-        <div class="privacy-hint">◉ Datos locales en este navegador<br><span>No se envía información a
-            servidores.</span></div>
+        <div class="privacy-hint">◉ Datos locales en este navegador<br><span>No se envía información a servidores.</span></div>
       </div>
     </aside>
 
     <main class="main-content">
       <header class="topbar">
         <button class="sidebar-toggle" id="menuToggle" aria-label="Abrir menú" type="button">☰</button>
-        <div class="breadcrumb"><span id="breadcrumbApp">DECISION STUDIO</span> <span>/</span> CUESTIONARIO DE
-          ARQUITECTURA</div>
+        <div class="breadcrumb"><span id="breadcrumbApp">DECISION STUDIO</span> <span>/</span> CUESTIONARIO DE ARQUITECTURA</div>
         <div class="top-actions">
-          <span class="save-status" id="saveState" role="status" aria-live="polite"><span class="save-led"></span>
-            Autoguardado activo</span>
-          <button id="helpButton" class="small-ghost help-launch" type="button" aria-controls="helpDrawer"
-            aria-expanded="false" title="Guía y preguntas frecuentes">ⓘ Ayuda</button>
-          <button id="settingsButton" class="small-ghost" type="button">⚙ Personalizar</button><button id="editorButton"
-            class="small-ghost" type="button">✎ Editor</button><button id="aiButton" class="small-ghost" type="button"
-            title="Herramientas de IA para ChatGPT y Claude">✦ Decision Studio AI</button><button id="backupButton"
-            class="small-ghost" type="button" title="Descargar respaldo JSON">↧ <span>Guardar proyecto</span></button>
+          <span class="save-status" id="saveState" role="status" aria-live="polite"><span class="save-led"></span> Autoguardado activo</span>
+          <button id="helpButton" class="small-ghost help-launch" type="button" aria-controls="helpDrawer" aria-expanded="false" title="Guía y preguntas frecuentes">ⓘ Ayuda</button>
+          <button id="settingsButton" class="small-ghost" type="button">⚙ Personalizar</button><button id="editorButton" class="small-ghost" type="button">✎ Editor</button><button id="aiButton" class="small-ghost" type="button" title="Herramientas de IA para ChatGPT y Claude">✦ Decision Studio AI</button><button id="backupButton" class="small-ghost" type="button" title="Descargar respaldo JSON">↧ <span>Guardar proyecto</span></button>
           <button id="exportButton" class="primary-btn" type="button">Exportar informe <span>↗</span></button>
         </div>
       </header>
@@ -65,476 +50,190 @@
       <div class="page-content">
         <section class="hero">
           <div>
-            <div class="eyebrow"><span class="eyebrow-line"></span> <span id="heroClient">VALIDACIONES TÉCNICAS ·
-                DECISIONES</span></div>
+            <div class="eyebrow"><span class="eyebrow-line"></span> <span id="heroClient">VALIDACIONES TÉCNICAS · DECISIONES</span></div>
             <h1>Las decisiones claras<br><em>aceleran la arquitectura.</em></h1>
-            <p>Guía interactiva para validar la infraestructura, el desarrollo y los criterios de aceptación antes de
-              construir.</p>
+            <p>Guía interactiva para validar la infraestructura, el desarrollo y los criterios de aceptación antes de construir.</p>
           </div>
           <div class="hero-art" aria-hidden="true">
-            <div class="orbits orbit-one"></div>
-            <div class="orbits orbit-two"></div>
-            <div class="orbit-center"><svg width="62" height="62" viewBox="0 0 62 62" fill="none">
-                <path d="M31 3L54.8 16.5V45.5L31 59L7.2 45.5V16.5L31 3Z" stroke="currentColor" stroke-width="1.6" />
-                <path d="M7 17L31 31L55 17M31 31V59M19 10L43 24M43 10L19 24" stroke="currentColor" stroke-width="1.6" />
-              </svg></div>
-            <span class="orbit-tag tag-one">CLOUD</span><span class="orbit-tag tag-two">CI/CD</span><span
-              class="orbit-tag tag-three">GOBIERNO</span>
+            <div class="orbits orbit-one"></div><div class="orbits orbit-two"></div>
+            <div class="orbit-center"><svg width="62" height="62" viewBox="0 0 62 62" fill="none"><path d="M31 3L54.8 16.5V45.5L31 59L7.2 45.5V16.5L31 3Z" stroke="currentColor" stroke-width="1.6"/><path d="M7 17L31 31L55 17M31 31V59M19 10L43 24M43 10L19 24" stroke="currentColor" stroke-width="1.6"/></svg></div>
+            <span class="orbit-tag tag-one">CLOUD</span><span class="orbit-tag tag-two">CI/CD</span><span class="orbit-tag tag-three">GOBIERNO</span>
           </div>
         </section>
 
         <section class="session-meta" aria-label="Datos de la reunión">
-          <label>REUNIÓN<input type="text" id="meetingTitle" maxlength="140"
-              placeholder="Ej.: Validación de arquitectura del proyecto"></label>
+          <label>REUNIÓN<input type="text" id="meetingTitle" maxlength="140" placeholder="Ej.: Validación de arquitectura del proyecto"></label>
           <label>FECHA<input type="date" id="meetingDate"></label>
-          <label>PARTICIPANTES<input type="text" id="participants" maxlength="350"
-              placeholder="Agregar nombres / áreas"></label>
-          <button class="meta-collapse" id="metaCollapse" type="button"
-            aria-label="Contraer datos de reunión">⌃</button>
+          <label>PARTICIPANTES<input type="text" id="participants" maxlength="350" placeholder="Agregar nombres / áreas"></label>
+          <button class="meta-collapse" id="metaCollapse" type="button" aria-label="Contraer datos de reunión">⌃</button>
         </section>
 
         <section class="dashboard" aria-label="Progreso de validaciones">
-          <div class="kpi">
-            <div class="kpi-icon">◎</div><span>VALIDACIONES</span>
-            <div class="kpi-value" id="statTotal">25</div><small>Bloques configurables</small>
-          </div>
-          <div class="kpi">
-            <div class="kpi-icon green">✓</div><span>CONFIRMADAS</span>
-            <div class="kpi-value" id="statConfirmed">0</div><small>Decisiones acordadas</small>
-          </div>
-          <div class="kpi">
-            <div class="kpi-icon orange">◷</div><span>PENDIENTES</span>
-            <div class="kpi-value" id="statPending">0</div><small>Con seguimiento asignado</small>
-          </div>
-          <div class="kpi">
-            <div class="kpi-icon gray">◇</div><span>SIN REVISAR</span>
-            <div class="kpi-value" id="statUnreviewed">0</div><small>Aún no tratadas</small>
-          </div>
-          <div class="progress-panel">
-            <div class="progress-copy"><span>AVANCE DE LA VALIDACIÓN</span><strong id="progressNumber">0%</strong></div>
-            <div class="progress-rail">
-              <div class="progress-fill" id="progressFill"></div>
-            </div><small id="progressSub">0 decisiones tratadas</small>
-          </div>
+          <div class="kpi"><div class="kpi-icon">◎</div><span>VALIDACIONES</span><div class="kpi-value" id="statTotal">25</div><small>Bloques configurables</small></div>
+          <div class="kpi"><div class="kpi-icon green">✓</div><span>CONFIRMADAS</span><div class="kpi-value" id="statConfirmed">0</div><small>Decisiones acordadas</small></div>
+          <div class="kpi"><div class="kpi-icon orange">◷</div><span>PENDIENTES</span><div class="kpi-value" id="statPending">0</div><small>Con seguimiento asignado</small></div>
+          <div class="kpi"><div class="kpi-icon gray">◇</div><span>SIN REVISAR</span><div class="kpi-value" id="statUnreviewed">0</div><small>Aún no tratadas</small></div>
+          <div class="progress-panel"><div class="progress-copy"><span>AVANCE DE LA VALIDACIÓN</span><strong id="progressNumber">0%</strong></div><div class="progress-rail"><div class="progress-fill" id="progressFill"></div></div><small id="progressSub">0 decisiones tratadas</small></div>
         </section>
 
         <section class="work-area">
           <div class="workspace-head">
-            <div>
-              <div class="overline">ESPACIO DE TRABAJO</div>
-              <h2>Resolución de validaciones</h2>
-              <p>Elige libremente la tecnología o agrega una alternativa propia; registra el acuerdo y continúa.</p>
-            </div>
+            <div><div class="overline">ESPACIO DE TRABAJO</div><h2>Resolución de validaciones</h2><p>Elige libremente la tecnología o agrega una alternativa propia; registra el acuerdo y continúa.</p></div>
             <div class="view-switch" role="tablist" aria-label="Modo de visualización">
-              <button id="focusViewBtn" class="active" type="button" role="tab" aria-selected="true">◫ Modo
-                reunión</button>
+              <button id="focusViewBtn" class="active" type="button" role="tab" aria-selected="true">◫ Modo reunión</button>
               <button id="matrixViewBtn" type="button" role="tab" aria-selected="false">☷ Matriz completa</button>
             </div>
           </div>
 
           <div id="focusView" class="focus-view">
-            <div class="question-top">
-              <div id="currentGroup" class="section-badge">01 · INFRAESTRUCTURA</div>
-              <div class="jump-box"><label for="questionJump">Ir a pregunta</label><select id="questionJump"
-                  aria-label="Seleccionar pregunta"></select><span id="questionCount" class="question-count">PREGUNTA
-                  01</span></div>
-            </div>
+            <div class="question-top"><div id="currentGroup" class="section-badge">01 · INFRAESTRUCTURA</div><div class="jump-box"><label for="questionJump">Ir a pregunta</label><select id="questionJump" aria-label="Seleccionar pregunta"></select><span id="questionCount" class="question-count">PREGUNTA 01</span></div></div>
             <article class="question-card" aria-labelledby="questionText">
-              <div class="card-heading">
-                <div class="card-tags"><span id="questionPriority" class="priority-tag">P0 · CRÍTICA</span><span
-                    id="questionDeadline" class="deadline-tag">ANTES DE S1</span></div><span id="questionOrigin"
-                  class="origin-tag">PENDIENTE DE CLIENTE</span>
-              </div>
+              <div class="card-heading"><div class="card-tags"><span id="questionPriority" class="priority-tag">P0 · CRÍTICA</span><span id="questionDeadline" class="deadline-tag">ANTES DE S1</span></div><span id="questionOrigin" class="origin-tag">PENDIENTE DE CLIENTE</span></div>
               <h3 id="questionText"></h3>
-              <div class="rec-box">
-                <div class="rec-header"><span class="rec-spark">✦</span><strong>Contexto técnico / recomendación (no
-                    vinculante)</strong></div>
-                <p id="suggestionText"></p>
-                <div class="source-line" id="sourceText"></div>
-              </div>
+              <div class="rec-box"><div class="rec-header"><span class="rec-spark">✦</span><strong>Contexto técnico / recomendación (no vinculante)</strong></div><p id="suggestionText"></p><div class="source-line" id="sourceText"></div></div>
               <div class="form-grid">
-                <div class="wide-field"><label for="answerSelect">RESPUESTA / ALTERNATIVA ACORDADA</label>
-                  <div class="select-wrap"><select id="answerSelect">
-                      <option value="">Selecciona una alternativa…</option>
-                    </select></div>
-                  <div id="customAnswerWrap" class="custom-answer hidden"><label for="customAnswer">ESPECIFICAR OTRA
-                      ALTERNATIVA</label><input type="text" id="customAnswer" maxlength="600"
-                      placeholder="Escribe la opción acordada con el cliente…"></div>
-                </div>
-                <div class="wide-field"><label>ESTADO DE LA VALIDACIÓN</label>
-                  <div class="status-buttons" id="statusButtons" role="group" aria-label="Estado de decisión"><button
-                      data-status="confirmada" type="button">✓ Confirmada</button><button data-status="pendiente"
-                      type="button">◷ Pendiente</button><button data-status="revision" type="button">↻ En
-                      revisión</button><button data-status="no_aplica" type="button">— No aplica</button></div>
-                </div>
-                <div class="form-field"><label for="ownerSelect">RESPONSABLE DEL ACUERDO</label><select
-                    id="ownerSelect">
-                    <option value="">Por asignar</option>
-                    <option value="Cloud / Infraestructura">Cloud / Infraestructura</option>
-                    <option value="DevOps / CI-CD">DevOps / CI-CD</option>
-                    <option value="Seguridad / AppSec">Seguridad / AppSec</option>
-                    <option value="Identidad / IAM">Identidad / IAM</option>
-                    <option value="CoE / Gobierno IA">CoE / Gobierno IA</option>
-                    <option value="Equipo de implementación">Equipo de implementación</option>
-                    <option value="Coordinación">Coordinación</option>
-                    <option value="Proveedor">Proveedor</option>
-                    <option value="Responsable funcional">Responsable funcional</option>
-                    <option value="__other__">Otra persona / área…</option>
-                  </select><input type="text" class="hidden" id="customOwner" maxlength="120"
-                    placeholder="Responsable específico"></div>
-                <div class="form-field"><label for="commitmentDate">FECHA DE COMPROMISO</label><input type="date"
-                    id="commitmentDate"></div>
-                <div class="wide-field"><label for="notes">NOTAS, OBSERVACIONES Y PRÓXIMAS ACCIONES</label><textarea
-                    id="notes" rows="3" maxlength="2000"
-                    placeholder="Ej.: El responsable compartirá los accesos y confirmará la fecha…"></textarea></div>
+                <div class="wide-field"><label for="answerSelect">RESPUESTA / ALTERNATIVA ACORDADA</label><div class="select-wrap"><select id="answerSelect"><option value="">Selecciona una alternativa…</option></select></div><div id="customAnswerWrap" class="custom-answer hidden"><label for="customAnswer">ESPECIFICAR OTRA ALTERNATIVA</label><input type="text" id="customAnswer" maxlength="600" placeholder="Escribe la opción acordada con el cliente…"></div></div>
+                <div class="wide-field"><label>ESTADO DE LA VALIDACIÓN</label><div class="status-buttons" id="statusButtons" role="group" aria-label="Estado de decisión"><button data-status="confirmada" type="button">✓ Confirmada</button><button data-status="pendiente" type="button">◷ Pendiente</button><button data-status="revision" type="button">↻ En revisión</button><button data-status="no_aplica" type="button">— No aplica</button></div></div>
+                <div class="form-field"><label for="ownerSelect">RESPONSABLE DEL ACUERDO</label><select id="ownerSelect"><option value="">Por asignar</option><option value="Cloud / Infraestructura">Cloud / Infraestructura</option><option value="DevOps / CI-CD">DevOps / CI-CD</option><option value="Seguridad / AppSec">Seguridad / AppSec</option><option value="Identidad / IAM">Identidad / IAM</option><option value="CoE / Gobierno IA">CoE / Gobierno IA</option><option value="Equipo de implementación">Equipo de implementación</option><option value="Coordinación">Coordinación</option><option value="Proveedor">Proveedor</option><option value="Responsable funcional">Responsable funcional</option><option value="__other__">Otra persona / área…</option></select><input type="text" class="hidden" id="customOwner" maxlength="120" placeholder="Responsable específico"></div>
+                <div class="form-field"><label for="commitmentDate">FECHA DE COMPROMISO</label><input type="date" id="commitmentDate"></div>
+                <div class="wide-field"><label for="notes">NOTAS, OBSERVACIONES Y PRÓXIMAS ACCIONES</label><textarea id="notes" rows="3" maxlength="2000" placeholder="Ej.: El responsable compartirá los accesos y confirmará la fecha…"></textarea></div>
               </div>
-              <div class="question-footer">
-                <div class="question-feedback" id="questionFeedback">○ Sin cambios registrados</div>
-                <div class="question-controls"><button id="prevQuestion" type="button" class="nav-btn">←
-                    Anterior</button><button id="nextQuestion" type="button" class="nav-btn next-btn">Siguiente
-                    →</button></div>
-              </div>
+              <div class="question-footer"><div class="question-feedback" id="questionFeedback">○ Sin cambios registrados</div><div class="question-controls"><button id="prevQuestion" type="button" class="nav-btn">← Anterior</button><button id="nextQuestion" type="button" class="nav-btn next-btn">Siguiente →</button></div></div>
             </article>
           </div>
 
           <div id="matrixView" class="matrix-view hidden">
-            <div class="matrix-toolbar">
-              <div class="search-field"><span>⌕</span><input id="searchInput" type="search"
-                  placeholder="Buscar por pregunta, tecnología o área…" aria-label="Buscar preguntas"></div><select
-                id="filterGroup" aria-label="Filtrar por bloque">
-                <option value="all">Todos los bloques</option>
-              </select><select id="filterStatus" aria-label="Filtrar por estado">
-                <option value="all">Todos los estados</option>
-                <option value="sin_revisar">Sin revisar</option>
-                <option value="confirmada">Confirmadas</option>
-                <option value="pendiente">Pendientes</option>
-                <option value="revision">En revisión</option>
-                <option value="no_aplica">No aplica</option>
-              </select>
-            </div>
-            <div class="matrix-scroll">
-              <table class="matrix-table">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>VALIDACIÓN</th>
-                    <th>DECISIÓN / RESPUESTA</th>
-                    <th>ESTADO</th>
-                    <th>CIERRE</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody id="matrixBody"></tbody>
-              </table>
-            </div>
+            <div class="matrix-toolbar"><div class="search-field"><span>⌕</span><input id="searchInput" type="search" placeholder="Buscar por pregunta, tecnología o área…" aria-label="Buscar preguntas"></div><select id="filterGroup" aria-label="Filtrar por bloque"><option value="all">Todos los bloques</option></select><select id="filterStatus" aria-label="Filtrar por estado"><option value="all">Todos los estados</option><option value="sin_revisar">Sin revisar</option><option value="confirmada">Confirmadas</option><option value="pendiente">Pendientes</option><option value="revision">En revisión</option><option value="no_aplica">No aplica</option></select></div>
+            <div class="matrix-scroll"><table class="matrix-table"><thead><tr><th>ID</th><th>VALIDACIÓN</th><th>DECISIÓN / RESPUESTA</th><th>ESTADO</th><th>CIERRE</th><th></th></tr></thead><tbody id="matrixBody"></tbody></table></div>
             <p class="matrix-note" id="matrixCount">Mostrando validaciones</p>
           </div>
         </section>
 
-        <footer class="page-footer"><span>DECISION STUDIO · PLANTILLA EDITABLE DE ARQUITECTURA</span><span>Preparado
-            para sesiones de arquitectura · Uso interno</span></footer>
+        <footer class="page-footer"><span>DECISION STUDIO · PLANTILLA EDITABLE DE ARQUITECTURA</span><span>Preparado para sesiones de arquitectura · Uso interno</span></footer>
       </div>
     </main>
   </div>
 
-
-  <!-- Guía incorporada: disponible sin conexión, sin página externa -->
-  <div id="helpBackdrop" class="help-scrim hidden" aria-hidden="true"></div>
-  <aside id="helpDrawer" class="help-drawer hidden" role="dialog" aria-modal="true"
-    aria-label="Centro de ayuda de Decision Studio" tabindex="-1">
-    <div class="help-head">
-      <div><small>DECISION STUDIO · DOCUMENTACIÓN</small>
-        <h2>Centro de ayuda</h2>
-        <p>Aprende a configurar cuestionarios, conducir reuniones y administrar tus registros.</p>
-      </div><button id="helpClose" class="help-close" type="button" aria-label="Cerrar ayuda">×</button>
-    </div>
-    <div class="help-tabs" role="tablist" aria-label="Secciones de ayuda">
-      <button type="button" class="help-tab" id="tab-start" role="tab" aria-controls="help-start" aria-selected="true"
-        data-tab="start">Inicio</button>
-      <button type="button" class="help-tab" id="tab-meeting" role="tab" aria-controls="help-meeting"
-        aria-selected="false" data-tab="meeting">Reunión</button>
-      <button type="button" class="help-tab" id="tab-faq" role="tab" aria-controls="help-faq" aria-selected="false"
-        data-tab="faq">FAQ</button>
-    </div>
-    <div class="help-body">
-      <section id="help-start" class="help-page" role="tabpanel" aria-labelledby="tab-start">
-        <h3>Primeros pasos</h3>
-        <p>Decision Studio es un cuestionario editable para capturar decisiones y dependencias técnicas sin dar por
-          aprobada ninguna tecnología.</p>
-        <ol>
-          <li>Abre <strong>⚙ Personalizar</strong> para definir cliente, proyecto, título y logo opcional.</li>
-          <li>Revisa las preguntas existentes y utiliza <strong>✎ Editor</strong> para añadir, quitar, reorganizar o
-            cambiar preguntas y opciones.</li>
-          <li>En el Editor puedes <strong>exportar una plantilla JSON</strong> e importar otra para un nuevo
-            cuestionario.</li>
-          <li>Configura el nombre y la fecha de reunión, y sus participantes.</li>
-        </ol>
-        <div class="help-card"><strong>Plantillas reutilizables</strong>
-          <p>Descarga la plantilla antes de realizar modificaciones grandes. Al importar una plantilla que reemplaza el
-            cuestionario, revisa el aviso y conserva un respaldo de la sesión anterior.</p>
-        </div>
-        <button type="button" class="help-action" data-help-open="settings">Personalizar</button><button type="button"
-          class="help-action alt" data-help-open="editor">Abrir editor</button>
-      </section>
-      <section id="help-meeting" class="help-page" role="tabpanel" aria-labelledby="tab-meeting" hidden>
-        <h3>Durante una reunión</h3>
-        <ol>
-          <li>Selecciona la duración de la sesión en el panel izquierdo y pulsa <strong>Iniciar</strong> en el
-            cronómetro.</li>
-          <li>Usa <strong>Anterior / Siguiente</strong> o <strong>Ir a pregunta</strong> para navegar directamente.</li>
-          <li>Registra la opción acordada o escribe una alternativa personalizada.</li>
-          <li>Marca cada pregunta como <strong>Confirmada, Pendiente, En revisión o No aplica</strong>. Añade
-            responsable, fecha y notas.</li>
-          <li>Cambia a <strong>Vista matriz</strong> para localizar pendientes mediante filtros y búsqueda.</li>
-        </ol>
-        <div class="help-card"><strong>Al terminar</strong>
-          <p>Desde <strong>Exportar informe</strong> descarga Word, Excel o un respaldo JSON. Los informes no requieren
-            subir datos a un servidor.</p>
-        </div><button type="button" class="help-action" data-help-open="export">Exportar informe</button>
-      </section>
-      <section id="help-faq" class="help-page" role="tabpanel" aria-labelledby="tab-faq" hidden>
-        <h3>Preguntas frecuentes</h3>
-        <h4>¿Qué ocurre si actualizo accidentalmente la página?</h4>
-        <p>El guardado local conserva las respuestas mientras la sesión del navegador continúe disponible. En
-          <strong>Exportar informe</strong> puedes activar almacenamiento persistente para conservarlas también entre
-          aperturas.</p>
-        <h4>¿Cómo hago un respaldo?</h4>
-        <p>Exporta un <strong>respaldo JSON completo</strong>. Al abrirlo puedes recuperar todo el proyecto o reutilizar
-          únicamente las preguntas como plantilla para otro cliente. No lo confundas con el JSON de cambios generado por
-          IA.</p>
-        <h4>¿Puedo trabajar sin Internet?</h4>
-        <p>El cuestionario y esta guía funcionan localmente. Para acceder a ChatGPT, Claude o descargar los Skills desde
-          el portal se requiere conectividad.</p>
-        <h4>¿Otros usuarios verán mis respuestas?</h4>
-        <p>El portal estático no comparte respuestas con otros visitantes. Los datos residen en tu navegador, excepto
-          los archivos que tú decidas descargar, enviar o adjuntar a un asistente.</p>
-        <div class="help-note"><strong>Privacidad:</strong> revisa cuidadosamente cualquier información que decidas
-          compartir y respeta las políticas de tu organización y de cada cliente.</div>
-      </section>
-    </div>
-    <div class="help-foot">La guía permanece disponible mientras completas el cuestionario. Pulsa <strong>Esc</strong> o
-      <strong>×</strong> para cerrarla.</div>
-  </aside>
+  
+<!-- Guía incorporada: disponible sin conexión, sin página externa -->
+<div id="helpBackdrop" class="help-scrim hidden" aria-hidden="true"></div>
+<aside id="helpDrawer" class="help-drawer hidden" role="dialog" aria-modal="true" aria-label="Centro de ayuda de Decision Studio" tabindex="-1">
+ <div class="help-head"><div><small>DECISION STUDIO · DOCUMENTACIÓN</small><h2>Centro de ayuda</h2><p>Aprende a configurar cuestionarios, conducir reuniones y administrar tus registros.</p></div><button id="helpClose" class="help-close" type="button" aria-label="Cerrar ayuda">×</button></div>
+ <div class="help-tabs" role="tablist" aria-label="Secciones de ayuda">
+  <button type="button" class="help-tab" id="tab-start" role="tab" aria-controls="help-start" aria-selected="true" data-tab="start">Inicio</button>
+  <button type="button" class="help-tab" id="tab-meeting" role="tab" aria-controls="help-meeting" aria-selected="false" data-tab="meeting">Reunión</button>
+  <button type="button" class="help-tab" id="tab-faq" role="tab" aria-controls="help-faq" aria-selected="false" data-tab="faq">FAQ</button>
+ </div>
+ <div class="help-body">
+  <section id="help-start" class="help-page" role="tabpanel" aria-labelledby="tab-start">
+   <h3>Primeros pasos</h3><p>Decision Studio es un cuestionario editable para capturar decisiones y dependencias técnicas sin dar por aprobada ninguna tecnología.</p>
+   <ol><li>Abre <strong>⚙ Personalizar</strong> para definir cliente, proyecto, título y logo opcional.</li><li>Revisa las preguntas existentes y utiliza <strong>✎ Editor</strong> para añadir, quitar, reorganizar o cambiar preguntas y opciones.</li><li>En el Editor puedes <strong>exportar una plantilla JSON</strong> e importar otra para un nuevo cuestionario.</li><li>Configura el nombre y la fecha de reunión, y sus participantes.</li></ol>
+   <div class="help-card"><strong>Plantillas reutilizables</strong><p>Descarga la plantilla antes de realizar modificaciones grandes. Al importar una plantilla que reemplaza el cuestionario, revisa el aviso y conserva un respaldo de la sesión anterior.</p></div>
+   <button type="button" class="help-action" data-help-open="settings">Personalizar</button><button type="button" class="help-action alt" data-help-open="editor">Abrir editor</button>
+  </section>
+  <section id="help-meeting" class="help-page" role="tabpanel" aria-labelledby="tab-meeting" hidden>
+   <h3>Durante una reunión</h3><ol><li>Selecciona la duración de la sesión en el panel izquierdo y pulsa <strong>Iniciar</strong> en el cronómetro.</li><li>Usa <strong>Anterior / Siguiente</strong> o <strong>Ir a pregunta</strong> para navegar directamente.</li><li>Registra la opción acordada o escribe una alternativa personalizada.</li><li>Marca cada pregunta como <strong>Confirmada, Pendiente, En revisión o No aplica</strong>. Añade responsable, fecha y notas.</li><li>Cambia a <strong>Vista matriz</strong> para localizar pendientes mediante filtros y búsqueda.</li></ol>
+   <div class="help-card"><strong>Al terminar</strong><p>Desde <strong>Exportar informe</strong> descarga Word, Excel o un respaldo JSON. Los informes no requieren subir datos a un servidor.</p></div><button type="button" class="help-action" data-help-open="export">Exportar informe</button>
+  </section>
+  <section id="help-faq" class="help-page" role="tabpanel" aria-labelledby="tab-faq" hidden>
+   <h3>Preguntas frecuentes</h3>
+   <h4>¿Qué ocurre si actualizo accidentalmente la página?</h4><p>El guardado local conserva las respuestas mientras la sesión del navegador continúe disponible. En <strong>Exportar informe</strong> puedes activar almacenamiento persistente para conservarlas también entre aperturas.</p>
+   <h4>¿Cómo hago un respaldo?</h4><p>Exporta un <strong>respaldo JSON completo</strong>. Al abrirlo puedes recuperar todo el proyecto o reutilizar únicamente las preguntas como plantilla para otro cliente. No lo confundas con el JSON de cambios generado por IA.</p>
+   <h4>¿Puedo trabajar sin Internet?</h4><p>El cuestionario y esta guía funcionan localmente. Para acceder a ChatGPT, Claude o descargar los Skills desde el portal se requiere conectividad.</p>
+   <h4>¿Otros usuarios verán mis respuestas?</h4><p>El portal estático no comparte respuestas con otros visitantes. Los datos residen en tu navegador, excepto los archivos que tú decidas descargar, enviar o adjuntar a un asistente.</p>
+   <div class="help-note"><strong>Privacidad:</strong> revisa cuidadosamente cualquier información que decidas compartir y respeta las políticas de tu organización y de cada cliente.</div>
+  </section>
+ </div>
+ <div class="help-foot">La guía permanece disponible mientras completas el cuestionario. Pulsa <strong>Esc</strong> o <strong>×</strong> para cerrarla.</div>
+</aside>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <div class="modal-scrim hidden" id="exportModal" role="dialog" aria-modal="true" aria-labelledby="exportTitle">
     <div class="modal-card">
       <button id="closeExport" class="close-modal" type="button" aria-label="Cerrar">×</button>
-      <div class="modal-icon">↥</div>
-      <h2 id="exportTitle">Tu informe está listo</h2>
-      <p>Exporta las respuestas, acuerdos, responsables y pendientes. Los archivos se generan en este navegador, sin
-        subir información.</p>
+      <div class="modal-icon">↥</div><h2 id="exportTitle">Tu informe está listo</h2>
+      <p>Exporta las respuestas, acuerdos, responsables y pendientes. Los archivos se generan en este navegador, sin subir información.</p>
       <div class="modal-stats" id="exportStats"></div>
-      <button class="export-option" id="downloadWord" type="button">
-        <div class="file-mark word">W</div>
-        <div><strong>Informe ejecutivo en Word</strong><span>Resumen, acuerdos y pendientes</span></div><span
-          class="arrow">↗</span>
-      </button>
-      <button class="export-option" id="downloadExcel" type="button">
-        <div class="file-mark excel">X</div>
-        <div><strong>Matriz de seguimiento en Excel</strong><span>Resumen · Validaciones · Pendientes · Por
-            bloque</span></div><span class="arrow">↗</span>
-      </button>
-      <div class="modal-footer-actions"><button id="downloadJson" type="button">↓ Guardar proyecto
-          (.json)</button><button id="importJsonTrigger" type="button">↑ Abrir proyecto</button></div>
-      <div class="storage-row"><label class="switch"><input id="persistentCheck" type="checkbox"><span
-            class="switch-slider"></span></label>
-        <div><strong>Conservar datos incluso al cerrar el navegador</strong><small>Opcional. Desactivado: se usa
-            almacenamiento de sesión, que sobrevive a la actualización de página.</small></div>
-      </div>
+      <button class="export-option" id="downloadWord" type="button"><div class="file-mark word">W</div><div><strong>Informe ejecutivo en Word</strong><span>Resumen, acuerdos y pendientes</span></div><span class="arrow">↗</span></button>
+      <button class="export-option" id="downloadExcel" type="button"><div class="file-mark excel">X</div><div><strong>Matriz de seguimiento en Excel</strong><span>Resumen · Validaciones · Pendientes · Por bloque</span></div><span class="arrow">↗</span></button>
+      <div class="modal-footer-actions"><button id="downloadJson" type="button">↓ Guardar proyecto (.json)</button><button id="importJsonTrigger" type="button">↑ Abrir proyecto</button></div>
+      <div class="storage-row"><label class="switch"><input id="persistentCheck" type="checkbox"><span class="switch-slider"></span></label><div><strong>Conservar datos incluso al cerrar el navegador</strong><small>Opcional. Desactivado: se usa almacenamiento de sesión, que sobrevive a la actualización de página.</small></div></div>
       <button id="resetButton" class="danger-link" type="button">Borrar respuestas de esta sesión</button>
     </div>
   </div>
-  <div class="modal-scrim hidden" id="restoreModeModal" role="dialog" aria-modal="true"
-    aria-labelledby="restoreModeTitle">
+  <div class="modal-scrim hidden" id="restoreModeModal" role="dialog" aria-modal="true" aria-labelledby="restoreModeTitle">
     <div class="modal-card restore-mode-card">
       <button id="restoreModeClose" class="close-modal" type="button" aria-label="Cerrar">×</button>
-      <div class="modal-icon">↥</div>
-      <h2 id="restoreModeTitle">Abrir proyecto Decision Studio</h2>
+      <div class="modal-icon">↥</div><h2 id="restoreModeTitle">Abrir proyecto Decision Studio</h2>
       <p>Selecciona cómo quieres utilizar el archivo JSON. Nada se importará hasta que confirmes.</p>
       <div class="restore-preview" id="restorePreview" role="status"></div>
-      <fieldset class="restore-choices">
-        <legend>Modo de apertura</legend>
-        <label class="restore-choice"><input name="restoreMode" type="radio" value="full"
-            checked><span><strong>Continuar proyecto anterior</strong><small>Recuperar preguntas, respuestas,
-              decisiones, responsables, cliente y personalización.</small></span></label>
-        <label class="restore-choice"><input name="restoreMode" type="radio" value="template"><span><strong>Crear nuevo
-              proyecto desde esta plantilla</strong><small>Conservar preguntas, alternativas y recomendaciones, sin
-              respuestas, acuerdos ni datos del cliente anterior.</small></span></label>
+      <fieldset class="restore-choices"><legend>Modo de apertura</legend>
+        <label class="restore-choice"><input name="restoreMode" type="radio" value="full" checked><span><strong>Continuar proyecto anterior</strong><small>Recuperar preguntas, respuestas, decisiones, responsables, cliente y personalización.</small></span></label>
+        <label class="restore-choice"><input name="restoreMode" type="radio" value="template"><span><strong>Crear nuevo proyecto desde esta plantilla</strong><small>Conservar preguntas, alternativas y recomendaciones, sin respuestas, acuerdos ni datos del cliente anterior.</small></span></label>
       </fieldset>
-      <div class="restore-warning">⚠ Al confirmar, se reemplazará el proyecto abierto. Antes de continuar, utiliza
-        «Guardar proyecto» para respaldar los cambios actuales.</div>
-      <div class="restore-buttons"><button id="restoreModeCancel" type="button"
-          class="small-ghost">Cancelar</button><button id="restoreModeConfirm" type="button"
-          class="primary-btn">Continuar proyecto</button></div>
+      <div class="restore-warning">⚠ Al confirmar, se reemplazará el proyecto abierto. Antes de continuar, utiliza «Guardar proyecto» para respaldar los cambios actuales.</div>
+      <div class="restore-buttons"><button id="restoreModeCancel" type="button" class="small-ghost">Cancelar</button><button id="restoreModeConfirm" type="button" class="primary-btn">Continuar proyecto</button></div>
     </div>
   </div>
-  <input type="file" id="importJsonInput" accept=".json,application/json" class="hidden"
-    aria-label="Seleccionar archivo de respaldo">
+  <input type="file" id="importJsonInput" accept=".json,application/json" class="hidden" aria-label="Seleccionar archivo de respaldo">
 
-  <div class="modal-scrim hidden" id="settingsModal" role="dialog" aria-modal="true"
-    aria-label="Personalización de proyecto">
-    <div class="modal-card">
-      <button id="closeSettings" class="close-modal" type="button">×</button>
-      <div class="modal-icon">⚙</div>
-      <h2>Personalizar cuestionario</h2>
-      <p>Nombre, cliente y marca visual para adaptar la sesión a cada proyecto.</p>
-      <div class="settings-grid"><label>Nombre de la aplicación<input id="brandInput"
-            maxlength="80"></label><label>Subtítulo<input id="subtitleInput" maxlength="90"></label><label>Cliente<input
-            id="clientInput" maxlength="120" placeholder="Nombre del cliente"></label><label>Proyecto<input
-            id="projectInput" maxlength="140" placeholder="Nombre del proyecto"></label><label class="full">Logo
-          opcional (PNG, JPG o SVG)<input type="file" id="logoInput"
-            accept="image/png,image/jpeg,image/svg+xml"></label>
-        <div class="full"><img id="logoPreview" class="logo-preview hidden" alt="Vista previa del logo"><button
-            class="small-ghost" id="removeLogo" type="button">Quitar logo</button></div>
-      </div>
-      <div class="editor-foot"><button id="saveSettings" class="primary-btn" type="button">Guardar
-          personalización</button></div>
-    </div>
+<div class="modal-scrim hidden" id="settingsModal" role="dialog" aria-modal="true" aria-label="Personalización de proyecto"><div class="modal-card">
+<button id="closeSettings" class="close-modal" type="button">×</button><div class="modal-icon">⚙</div><h2>Personalizar cuestionario</h2><p>Nombre, cliente y marca visual para adaptar la sesión a cada proyecto.</p>
+<div class="settings-grid"><label>Nombre de la aplicación<input id="brandInput" maxlength="80"></label><label>Subtítulo<input id="subtitleInput" maxlength="90"></label><label>Cliente<input id="clientInput" maxlength="120" placeholder="Nombre del cliente"></label><label>Proyecto<input id="projectInput" maxlength="140" placeholder="Nombre del proyecto"></label><label class="full">Logo opcional (PNG, JPG o SVG)<input type="file" id="logoInput" accept="image/png,image/jpeg,image/svg+xml"></label><div class="full"><img id="logoPreview" class="logo-preview hidden" alt="Vista previa del logo"><button class="small-ghost" id="removeLogo" type="button">Quitar logo</button></div></div>
+<div class="editor-foot"><button id="saveSettings" class="primary-btn" type="button">Guardar personalización</button></div></div></div>
+<div class="modal-scrim hidden" id="editorModal" role="dialog" aria-modal="true" aria-label="Editor de cuestionario"><div class="modal-card editor-card">
+<button id="closeEditor" class="close-modal" type="button">×</button><div class="modal-icon">✎</div><h2>Editor de cuestionario</h2><p>Agrega, edita, elimina y reordena preguntas. También puedes cargar o exportar una plantilla JSON.</p>
+<div class="editor-actions"><button id="addQuestion" type="button">＋ Nueva pregunta</button><button id="deleteQuestion" type="button">Eliminar pregunta</button><button id="moveUp" type="button">↑ Subir</button><button id="moveDown" type="button">↓ Bajar</button><button id="downloadTemplate" type="button">↓ Exportar preguntas JSON</button><button id="loadTemplate" type="button">↑ Importar JSON</button></div>
+<div class="editor-list" id="editorList"></div>
+<div class="editor-fields"><label>Bloque<select id="editGroup"></select></label><label>Prioridad<select id="editPriority"><option value="P0">P0 — Crítica</option><option value="P1">P1 — Importante</option></select></label><label class="full">Pregunta<textarea id="editQuestion" maxlength="900"></textarea></label><label class="full">Alternativas (una por línea)<textarea id="editOptions" rows="5"></textarea></label><label class="full">Contexto / recomendación<textarea id="editSuggestion" rows="3"></textarea></label><label>Momento de resolución<input id="editDue" maxlength="90"></label><label>Referencia opcional<input id="editReference" maxlength="200"></label></div>
+<div class="editor-foot"><button id="saveEditedQuestion" type="button" class="primary-btn">Guardar cambios</button></div><p class="inline-help">Las respuestas se conservan al editar el texto. Importar una plantilla nueva reemplaza las preguntas y reinicia las respuestas, previa confirmación.</p>
+</div></div><input type="file" id="templateFile" accept=".json,application/json" class="hidden">
+
+<div class="modal-scrim hidden" id="aiModal" role="dialog" aria-modal="true" aria-labelledby="aiTitle">
+ <div class="modal-card" style="width:min(100%,790px)">
+  <button class="close-modal" id="closeAI" type="button" aria-label="Cerrar">×</button>
+  <div class="modal-icon">✦</div><h2 id="aiTitle">Decision Studio AI</h2>
+  <p>Trabaja con ChatGPT o Claude sin conectar un servidor. Exporta el contexto del cuestionario y luego importa un paquete de cambios revisable.</p>
+  <div class="ai-nav" role="tablist" aria-label="Funciones de Decision Studio AI">
+    <button class="ai-tab" type="button" role="tab" aria-selected="true" data-ai-tab="workflow">Flujo de trabajo</button>
+    <button class="ai-tab" type="button" role="tab" aria-selected="false" data-ai-tab="assistants">ChatGPT y Claude</button>
+    <button class="ai-tab" type="button" role="tab" aria-selected="false" data-ai-tab="examples">Ejemplos de solicitudes</button>
+    <button class="ai-tab" type="button" role="tab" aria-selected="false" data-ai-tab="security">Seguridad</button>
   </div>
-  <div class="modal-scrim hidden" id="editorModal" role="dialog" aria-modal="true" aria-label="Editor de cuestionario">
-    <div class="modal-card editor-card">
-      <button id="closeEditor" class="close-modal" type="button">×</button>
-      <div class="modal-icon">✎</div>
-      <h2>Editor de cuestionario</h2>
-      <p>Agrega, edita, elimina y reordena preguntas. También puedes cargar o exportar una plantilla JSON.</p>
-      <div class="editor-actions"><button id="addQuestion" type="button">＋ Nueva pregunta</button><button
-          id="deleteQuestion" type="button">Eliminar pregunta</button><button id="moveUp" type="button">↑
-          Subir</button><button id="moveDown" type="button">↓ Bajar</button><button id="downloadTemplate"
-          type="button">↓ Exportar preguntas JSON</button><button id="loadTemplate" type="button">↑ Importar
-          JSON</button></div>
-      <div class="editor-list" id="editorList"></div>
-      <div class="editor-fields"><label>Bloque<select id="editGroup"></select></label><label>Prioridad<select
-            id="editPriority">
-            <option value="P0">P0 — Crítica</option>
-            <option value="P1">P1 — Importante</option>
-          </select></label><label class="full">Pregunta<textarea id="editQuestion"
-            maxlength="900"></textarea></label><label class="full">Alternativas (una por línea)<textarea
-            id="editOptions" rows="5"></textarea></label><label class="full">Contexto / recomendación<textarea
-            id="editSuggestion" rows="3"></textarea></label><label>Momento de resolución<input id="editDue"
-            maxlength="90"></label><label>Referencia opcional<input id="editReference" maxlength="200"></label></div>
-      <div class="editor-foot"><button id="saveEditedQuestion" type="button" class="primary-btn">Guardar
-          cambios</button></div>
-      <p class="inline-help">Las respuestas se conservan al editar el texto. Importar una plantilla nueva reemplaza las
-        preguntas y reinicia las respuestas, previa confirmación.</p>
+  <section class="ai-tab-page" data-ai-page="workflow">
+  <div class="ai-steps"><div><b>1. Exportar contexto</b><p>Contiene preguntas, respuestas, decisiones, estados y recomendaciones. Revisa información sensible antes de compartirla con una IA.</p><button class="primary-btn" id="aiExportContext" type="button">↓ Contexto para IA (.json)</button></div><div><b>2. Solicitar análisis</b><p>Adjunta el contexto en ChatGPT o Claude con Decision Studio AI; solicita análisis, riesgos, dependencias o nuevas preguntas.</p><button class="small-ghost" id="aiCopyPrompt" type="button">Copiar prompt de trabajo</button></div><div><b>3. Importar cambios</b><p>Solo se admiten operaciones permitidas. Previsualiza y aprueba expresamente antes de aplicar.</p><button class="primary-btn" id="aiSelectPatch" type="button">↑ Revisar cambios de IA (.json)</button><input id="aiPatchFile" type="file" accept=".json,application/json" class="hidden"></div></div>
+  </section>
+  <section class="ai-tab-page" data-ai-page="assistants" hidden>
+    <h3>Usa Decision Studio con tu asistente preferido</h3>
+    <p>Ambos trabajan con archivos JSON: el contexto exportado se adjunta al asistente y los cambios aprobados se importan en la aplicación. No existe sincronización automática.</p>
+    <div class="ai-info-grid">
+      <div class="ai-info-card"><h4>ChatGPT · Plugin Decision Studio AI</h4><p>Abre el plugin, adjunta el JSON de contexto y solicita un análisis o un paquete de modificaciones. El plugin permanece privado y requiere autorización.</p><a class="help-action" href="https://chatgpt.com/plugins/plugins_6b0818c2af7081919e6605e44e2f411e" target="_blank" rel="noopener noreferrer">Abrir plugin de ChatGPT ↗</a><a class="help-action alt" href="../downloads/decision-studio-ai-chatgpt-plugin.zip" download>Descargar paquete</a></div>
+      <div class="ai-info-card"><h4>Claude · Skill Decision Studio AI</h4><p>Instala el Skill en una cuenta de Claude compatible, adjunta el contexto y solicita análisis o cambios en formato Decision Studio.</p><a class="help-action alt" href="../downloads/decision-studio-ai-claude-skill.zip" download>Descargar Skill para Claude</a></div>
     </div>
-  </div><input type="file" id="templateFile" accept=".json,application/json" class="hidden">
+    <div class="help-note">Los enlaces relativos de descarga están disponibles al abrir la aplicación desde el portal publicado. Si usas una copia HTML independiente, descarga los paquetes por separado.</div>
+  </section>
+  <section class="ai-tab-page" data-ai-page="examples" hidden>
+    <h3>Solicitudes listas para copiar</h3><p>Adjunta previamente el archivo JSON exportado de Decision Studio.</p>
+    <h4>Resumen de acuerdos y pendientes</h4><div class="help-example" id="aiPromptSummary">Resume las decisiones confirmadas y pendientes del contexto Decision Studio. Señala las cinco decisiones más relevantes, sus UID, responsables y próximos pasos. No conviertas propuestas en acuerdos.</div><button type="button" class="help-action alt" data-copy="aiPromptSummary">Copiar solicitud</button>
+    <h4>Riesgos y dependencias</h4><div class="help-example" id="aiPromptRisk">Identifica riesgos de arquitectura, contradicciones y dependencias a partir del contexto adjunto. Cita los UID que sustentan cada hallazgo, clasifica su impacto y recomienda acciones. No inventes información del cliente.</div><button type="button" class="help-action alt" data-copy="aiPromptRisk">Copiar solicitud</button>
+    <h4>Agregar nuevas preguntas</h4><div class="help-example" id="aiPromptPatch">Propón cinco preguntas nuevas a partir de los pendientes del contexto y genera un archivo JSON decision-studio-patch con schema_version 4.0. No modifiques respuestas, estados ni responsables; preserva los UID y evita preguntas duplicadas.</div><button type="button" class="help-action alt" data-copy="aiPromptPatch">Copiar solicitud</button>
+  </section>
+  <section class="ai-tab-page" data-ai-page="security" hidden>
+    <h3>Importación segura y privacidad</h3>
+    <div class="ai-info-card"><h4>¿Qué puede modificar la IA?</h4><p>El importador admite agregar preguntas, cambiar enunciados y añadir alternativas. Cada cambio se muestra en una vista previa que debes aprobar.</p></div>
+    <div class="ai-info-card"><h4>¿Qué permanece protegido?</h4><p>Los archivos de cambios no pueden modificar respuestas, estados, responsables ni fechas de compromiso. El importador rechaza referencias inválidas y conflictos.</p></div>
+    <div class="ai-info-card"><h4>¿Cómo recuperar una sesión?</h4><p>Descarga un respaldo JSON completo antes de importar cambios. El respaldo completo y el paquete de cambios son formatos diferentes.</p></div>
+    <div class="help-note"><strong>Confidencialidad:</strong> revisa y, si procede, anonimiza la información antes de compartirla con ChatGPT o Claude. Sigue las políticas del cliente y evita incluir datos secretos o personales innecesarios.</div>
+  </section>
+  <div id="aiPreview" class="hidden"><h3 id="aiPreviewTitle">Vista previa de cambios</h3><div id="aiPreviewSummary"></div><div id="aiPreviewList" class="ai-preview-list"></div><div class="editor-foot"><button id="aiCancelPatch" class="small-ghost" type="button">Cancelar</button><button id="aiApplyPatch" class="primary-btn" type="button" disabled>Aplicar cambios revisados</button></div></div>
+  <p class="inline-help">No se borran respuestas. Las modificaciones de preguntas respondidas requieren aprobación explícita y preservan el registro. Los cambios incompatibles se rechazan por completo.</p>
+ </div>
+</div>
 
-  <div class="modal-scrim hidden" id="aiModal" role="dialog" aria-modal="true" aria-labelledby="aiTitle">
-    <div class="modal-card" style="width:min(100%,790px)">
-      <button class="close-modal" id="closeAI" type="button" aria-label="Cerrar">×</button>
-      <div class="modal-icon">✦</div>
-      <h2 id="aiTitle">Decision Studio AI</h2>
-      <p>Trabaja con ChatGPT o Claude sin conectar un servidor. Exporta el contexto del cuestionario y luego importa un
-        paquete de cambios revisable.</p>
-      <div class="ai-nav" role="tablist" aria-label="Funciones de Decision Studio AI">
-        <button class="ai-tab" type="button" role="tab" aria-selected="true" data-ai-tab="workflow">Flujo de
-          trabajo</button>
-        <button class="ai-tab" type="button" role="tab" aria-selected="false" data-ai-tab="assistants">ChatGPT y
-          Claude</button>
-        <button class="ai-tab" type="button" role="tab" aria-selected="false" data-ai-tab="examples">Ejemplos de
-          solicitudes</button>
-        <button class="ai-tab" type="button" role="tab" aria-selected="false" data-ai-tab="security">Seguridad</button>
-      </div>
-      <section class="ai-tab-page" data-ai-page="workflow">
-        <div class="ai-steps">
-          <div><b>1. Exportar contexto</b>
-            <p>Contiene preguntas, respuestas, decisiones, estados y recomendaciones. Revisa información sensible antes
-              de compartirla con una IA.</p><button class="primary-btn" id="aiExportContext" type="button">↓ Contexto
-              para IA (.json)</button>
-          </div>
-          <div><b>2. Solicitar análisis</b>
-            <p>Adjunta el contexto en ChatGPT o Claude con Decision Studio AI; solicita análisis, riesgos, dependencias
-              o nuevas preguntas.</p><button class="small-ghost" id="aiCopyPrompt" type="button">Copiar prompt de
-              trabajo</button>
-          </div>
-          <div><b>3. Importar cambios</b>
-            <p>Solo se admiten operaciones permitidas. Previsualiza y aprueba expresamente antes de aplicar.</p><button
-              class="primary-btn" id="aiSelectPatch" type="button">↑ Revisar cambios de IA (.json)</button><input
-              id="aiPatchFile" type="file" accept=".json,application/json" class="hidden">
-          </div>
-        </div>
-      </section>
-      <section class="ai-tab-page" data-ai-page="assistants" hidden>
-        <h3>Usa Decision Studio con tu asistente preferido</h3>
-        <p>Ambos trabajan con archivos JSON: el contexto exportado se adjunta al asistente y los cambios aprobados se
-          importan en la aplicación. No existe sincronización automática.</p>
-        <div class="ai-info-grid">
-          <div class="ai-info-card">
-            <h4>ChatGPT · Plugin Decision Studio AI</h4>
-            <p>Abre el plugin, adjunta el JSON de contexto y solicita un análisis o un paquete de modificaciones. El
-              plugin permanece privado y requiere autorización.</p><a class="help-action"
-              href="https://chatgpt.com/plugins/plugins_6b0818c2af7081919e6605e44e2f411e" target="_blank"
-              rel="noopener noreferrer">Abrir plugin de ChatGPT ↗</a><a class="help-action alt"
-              href="../downloads/decision-studio-ai-chatgpt-plugin.zip" download>Descargar paquete</a>
-          </div>
-          <div class="ai-info-card">
-            <h4>Claude · Skill Decision Studio AI</h4>
-            <p>Instala el Skill en una cuenta de Claude compatible, adjunta el contexto y solicita análisis o cambios en
-              formato Decision Studio.</p><a class="help-action alt"
-              href="../downloads/decision-studio-ai-claude-skill.zip" download>Descargar Skill para Claude</a>
-          </div>
-        </div>
-        <div class="help-note">Los enlaces relativos de descarga están disponibles al abrir la aplicación desde el
-          portal publicado. Si usas una copia HTML independiente, descarga los paquetes por separado.</div>
-      </section>
-      <section class="ai-tab-page" data-ai-page="examples" hidden>
-        <h3>Solicitudes listas para copiar</h3>
-        <p>Adjunta previamente el archivo JSON exportado de Decision Studio.</p>
-        <h4>Resumen de acuerdos y pendientes</h4>
-        <div class="help-example" id="aiPromptSummary">Resume las decisiones confirmadas y pendientes del contexto
-          Decision Studio. Señala las cinco decisiones más relevantes, sus UID, responsables y próximos pasos. No
-          conviertas propuestas en acuerdos.</div><button type="button" class="help-action alt"
-          data-copy="aiPromptSummary">Copiar solicitud</button>
-        <h4>Riesgos y dependencias</h4>
-        <div class="help-example" id="aiPromptRisk">Identifica riesgos de arquitectura, contradicciones y dependencias a
-          partir del contexto adjunto. Cita los UID que sustentan cada hallazgo, clasifica su impacto y recomienda
-          acciones. No inventes información del cliente.</div><button type="button" class="help-action alt"
-          data-copy="aiPromptRisk">Copiar solicitud</button>
-        <h4>Agregar nuevas preguntas</h4>
-        <div class="help-example" id="aiPromptPatch">Propón cinco preguntas nuevas a partir de los pendientes del
-          contexto y genera un archivo JSON decision-studio-patch con schema_version 4.0. No modifiques respuestas,
-          estados ni responsables; preserva los UID y evita preguntas duplicadas.</div><button type="button"
-          class="help-action alt" data-copy="aiPromptPatch">Copiar solicitud</button>
-      </section>
-      <section class="ai-tab-page" data-ai-page="security" hidden>
-        <h3>Importación segura y privacidad</h3>
-        <div class="ai-info-card">
-          <h4>¿Qué puede modificar la IA?</h4>
-          <p>El importador admite agregar preguntas, cambiar enunciados y añadir alternativas. Cada cambio se muestra en
-            una vista previa que debes aprobar.</p>
-        </div>
-        <div class="ai-info-card">
-          <h4>¿Qué permanece protegido?</h4>
-          <p>Los archivos de cambios no pueden modificar respuestas, estados, responsables ni fechas de compromiso. El
-            importador rechaza referencias inválidas y conflictos.</p>
-        </div>
-        <div class="ai-info-card">
-          <h4>¿Cómo recuperar una sesión?</h4>
-          <p>Descarga un respaldo JSON completo antes de importar cambios. El respaldo completo y el paquete de cambios
-            son formatos diferentes.</p>
-        </div>
-        <div class="help-note"><strong>Confidencialidad:</strong> revisa y, si procede, anonimiza la información antes
-          de compartirla con ChatGPT o Claude. Sigue las políticas del cliente y evita incluir datos secretos o
-          personales innecesarios.</div>
-      </section>
-      <div id="aiPreview" class="hidden">
-        <h3 id="aiPreviewTitle">Vista previa de cambios</h3>
-        <div id="aiPreviewSummary"></div>
-        <div id="aiPreviewList" class="ai-preview-list"></div>
-        <div class="editor-foot"><button id="aiCancelPatch" class="small-ghost" type="button">Cancelar</button><button
-            id="aiApplyPatch" class="primary-btn" type="button" disabled>Aplicar cambios revisados</button></div>
-      </div>
-      <p class="inline-help">No se borran respuestas. Las modificaciones de preguntas respondidas requieren aprobación
-        explícita y preservan el registro. Los cambios incompatibles se rechazan por completo.</p>
-    </div>
-  </div>
+<script src="../js/decision-studio-data.js"></script>
+<script src="../js/decision-studio-export.js"></script>
+<script src="../js/decision-studio-app.js"></script>
 
-  <script src="../js/decision-studio-data.js"></script>
-  <script src="../js/decision-studio-export.js"></script>
-  <script src="../js/decision-studio-app.js"></script>
-
-  <script src="../js/decision-studio-help.js"></script>
+<script src="../js/decision-studio-help.js"></script>
 </body>
-
 </html>
