@@ -238,9 +238,7 @@
                     <span class="tool-open-hint">Abrir herramienta ↗</span>
                 </div>
                 <!-- Image Compressor -->
-                <div
-                    class="tool-card white"
-                    onclick="loadTool('tools/image-compressor.html')">
+                <div class="tool-card white" onclick="loadTool('tools/image-compressor.html')">
                     <span class="tool-category">MEDIA</span>
                     <div class="tool-icon">
                         <img src="images/compressor-image.png" alt="Image Compressor">
@@ -283,7 +281,24 @@
                     </div>
 
                     <span class="tool-open-hint">Abrir presentación ↗</span>
-                </div>          
+                </div>
+                <!-- Decision Studio v4: aplicación autónoma, nueva pestaña para conservar el espacio de trabajo -->
+                <div class="tool-card tool-card-featured white"
+                    onclick="window.open('tools/decision-studio.html', '_blank', 'noopener')" role="link" tabindex="0"
+                    aria-label="Abrir Decision Studio en una pestaña nueva"
+                    onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();window.open('tools/decision-studio.html','_blank','noopener')}">
+                    <span class="tool-category">ARQUITECTURA · IA</span>
+                    <span class="tool-new-badge">V4</span>
+                    <div class="tool-icon"><img src="images/decision-studio.svg" alt="Icono de Decision Studio"></div>
+                    <div class="tool-content">
+                        <h2>Decision Studio</h2>
+                        <p>Cuestionarios de arquitectura, acuerdos y riesgos con análisis asistido por IA.</p>
+                        <a class="decision-studio-guide-link" href="tools/decision-studio.html?help=ai"
+                            onclick="event.stopPropagation()">Guía integrada · ChatGPT y Claude ↗</a>
+                    </div>
+                    <span class="tool-open-hint">Abrir herramienta ↗</span>
+                </div>
+
                 <!-- Próximamente -->
                 <div class="tool-card tool-card-coming white" onclick="loadTool('tools/comming-soon.html')">
                     <span class="tool-category">COMING SOON</span>
@@ -317,6 +332,52 @@
                 GitHub @Francis8A ↗
             </a>
         </div>
+        <section class="site-legal" aria-labelledby="siteLegalHeading">
+            <h2 id="siteLegalHeading">Aviso importante sobre el uso de las herramientas</h2>
+            <p>Estas herramientas se ofrecen gratuitamente con fines informativos, educativos y de apoyo técnico, «tal
+                cual» y según disponibilidad. Sus resultados pueden contener errores y no sustituyen la validación
+                profesional. <strong>Verifica siempre los resultados antes de aplicarlos en sistemas, redes, datos o
+                    entornos productivos.</strong></p>
+            <details class="site-legal-details">
+                <summary>Leer condiciones de uso, limitación de responsabilidad y privacidad</summary>
+                <div class="site-legal-body">
+                    <h3>1. Alcance y uso bajo responsabilidad del usuario</h3>
+                    <p>Francis8A IT Tools ofrece calculadoras, asistentes, conversores y aplicaciones como apoyo a
+                        tareas tecnológicas. El usuario es responsable de interpretar, contrastar, probar y autorizar
+                        cualquier decisión o cambio. Se recomienda utilizar ambientes de prueba, copias de seguridad y
+                        procedimientos de control de cambios antes de ejecutar comandos o aplicar configuraciones.</p>
+                    <h3>2. Sin garantías de exactitud, idoneidad ni disponibilidad</h3>
+                    <p>Las herramientas y sus resultados se proporcionan sin garantía de exactitud, integridad,
+                        adecuación a un propósito concreto, funcionamiento ininterrumpido o ausencia de fallos. Los
+                        resultados dependen de los datos ingresados, el navegador, dependencias externas y el entorno
+                        donde se utilicen.</p>
+                    <h3>3. Limitación de responsabilidad</h3>
+                    <p>En la máxima medida permitida por la legislación aplicable, el titular del sitio no asume
+                        responsabilidad por pérdidas o daños derivados del uso incorrecto, de decisiones tomadas sin
+                        validación independiente, de la introducción de información errónea, de cambios aplicados en
+                        producción o de pérdida de datos locales. Esta cláusula no pretende excluir responsabilidades
+                        que la ley prohíba limitar o excluir.</p>
+                    <h3>4. Seguridad y datos</h3>
+                    <p>No ingreses contraseñas, tokens, datos personales sensibles ni información confidencial de
+                        clientes salvo que tengas autorización y hayas verificado el funcionamiento concreto de la
+                        herramienta. Algunas funciones pueden utilizar almacenamiento local o de sesión del navegador;
+                        ese almacenamiento puede borrarse. Descarga respaldos y protégelos. Si exportas datos hacia
+                        servicios de terceros —por ejemplo, asistentes de inteligencia artificial— revisa previamente
+                        sus políticas y permisos.</p>
+                    <h3>5. Servicios, enlaces y componentes de terceros</h3>
+                    <p>Los enlaces a servicios externos y los componentes de terceros están sujetos a sus propios
+                        términos, licencias y políticas. Su inclusión no supone afiliación, respaldo ni garantía de
+                        funcionamiento por parte de Francis8A IT Tools.</p>
+                    <h3>6. Uso permitido y cambios</h3>
+                    <p>Utiliza las herramientas de manera lícita, respetando las autorizaciones de los titulares de los
+                        sistemas y los derechos de terceros. El contenido, las funciones y estas condiciones pueden
+                        actualizarse. El uso del sitio no crea una relación de asesoría profesional ni un contrato de
+                        soporte.</p>
+                    <p class="site-legal-date">Última actualización: 26 de noviembre de 2026 · Este texto es informativo
+                        y debe ser revisado por asesoría legal antes de utilizarlo como documento contractual.</p>
+                </div>
+            </details>
+        </section>
         <p class="home-footer-copy">
             © 2026 Francis8A IT Tools · Built with HTML, CSS & JavaScript.
         </p>
